@@ -1,5 +1,6 @@
-import { RichText, Title } from '@gamiui/standard';
 import React from 'react';
+import { RichText, Title } from '@gamiui/standard';
+
 import * as S from './styles';
 
 export interface INews {

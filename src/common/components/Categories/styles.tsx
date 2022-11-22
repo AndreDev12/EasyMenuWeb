@@ -2,11 +2,11 @@ import styled from '@emotion/styled';
 import { Container } from '@gamiui/standard';
 
 export const Categories = styled(Container)`
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
   background-color: white;
   border-radius: 0.4rem;
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
 
   margin: auto;
   padding: 1rem 5px;

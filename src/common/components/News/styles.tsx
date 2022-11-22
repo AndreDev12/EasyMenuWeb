@@ -6,20 +6,20 @@ export const News = styled(Container)<{
   $backgroundImg?: string;
   $color?: string;
 }>`
-  background-color: darkgray;
+  /* background-color: darkgray; */
 
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
   gap: 1rem;
+  justify-content: center;
 
-  padding: 1rem;
   min-height: 60px;
+  padding: 1rem;
 
-  color: ${({ $color }) => $color};
   background-color: ${({ $backgroundColor }) => $backgroundColor};
   background-image: ${({ $backgroundImg }) => `url(${$backgroundImg})`};
-  background-size: 100% 100%;
   background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: ${({ $color }) => $color};
 `;

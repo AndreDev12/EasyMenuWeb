@@ -1,12 +1,13 @@
-import styled from '@emotion/styled';
-import { Button, Container, Icon, Modal, Tab } from '@gamiui/standard';
-import classNames from 'classnames';
 import * as React from 'react';
+import classNames from 'classnames';
+import { Button, Container, Icon, Modal, Tab } from '@gamiui/standard';
+
 import { lightTheme } from '../../styles/design-system/theme';
 import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
 import { Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
+// import styled from '@emotion/styled';
 
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
@@ -28,10 +29,11 @@ export default function Home() {
 
         <Container margin='1rem 0'>
           <News
-            title='Mira nuestras ultimas ofertas!'
-            description='Valido hasta el 14-12-22'
+            title='Mira nuestras últimas ofertas!'
+            description='Válido hasta el 14-12-22'
             backgroundColor={lightTheme.primary.first}
             color={lightTheme.neutral[800]}
+            backgroundImg={''}
           />
         </Container>
 
