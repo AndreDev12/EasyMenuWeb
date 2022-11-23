@@ -33,7 +33,7 @@ export default function Home() {
             description='Válido hasta el 14-12-22'
             backgroundColor={lightTheme.primary.first}
             color={lightTheme.neutral[800]}
-            backgroundImg={''}
+            backgroundImg=''
           />
         </Container>
 

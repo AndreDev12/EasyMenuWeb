@@ -6,7 +6,7 @@ export const categories = [
   },
   {
     id: 2,
-    text: 'Menu',
+    text: 'Menú',
     icon: 'share' as const,
   },
   {

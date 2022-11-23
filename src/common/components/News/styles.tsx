@@ -6,7 +6,7 @@ export const News = styled(Container)<{
   $backgroundImg?: string;
   $color?: string;
 }>`
-  /* background-color: darkgray; */
+  background-color: darkgray;
 
   align-items: center;
   display: flex;

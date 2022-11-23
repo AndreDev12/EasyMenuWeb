@@ -1,7 +1,9 @@
 export const productsByCategory = [
     {
         categoryId: 1,
-        products: [{}] 
+        products: [{
+            
+        }] 
     },
     {
         categoryId: 2,
