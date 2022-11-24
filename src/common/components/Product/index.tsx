@@ -7,9 +7,23 @@ import {
   Title,
 } from '@gamiui/standard';
 import classNames from 'classnames';
+
+import { productsByCategory } from '../../mocks/products';
 import * as S from './styles';
 
 export const Product = () => {
+  
+  let id = 1;
+
+  let category = productsByCategory.find(( category )  => {
+    const { categoryId } = category;
+    if(id === categoryId){
+        return category;
+    }
+  })
+
+  console.log(category?.products);
+
   return (
     <S.Product>
       <Card width='fit' shadow='xs' rounded='xs'>

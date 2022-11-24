@@ -1,16 +1,35 @@
 export const productsByCategory = [
     {
         categoryId: 1,
-        products: [{
-            
-        }] 
+        products: [
+            {
+                nombre: 'gaseosa'
+            },
+            {
+                nombre: 'agua de mesa'
+            }
+        ] 
     },
     {
         categoryId: 2,
-        products: [{}] 
+        products: [
+            {
+                nombre: 'Arroz saltado'
+            },
+            {
+                nombre: 'Pollo con ají'
+            }
+        ] 
     },
     {
         categoryId: 3,
-        products: [{}] 
+        products: [
+            {
+                nombre: 'Papas fritas'
+            },
+            {
+                nombre: 'Ensalada rusa'
+            }
+        ] 
     },
 ];

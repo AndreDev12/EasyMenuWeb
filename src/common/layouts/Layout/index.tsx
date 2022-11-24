@@ -1,3 +1,4 @@
+import { ThemeProvider } from '@emotion/react';
 import { Layout } from '@gamiui/standard';
 import * as React from 'react';
 import { Header, Footer } from '..';
@@ -10,10 +11,12 @@ export interface ILayoutWrapper {
 export const LayoutWrapper = ({ children }: ILayoutWrapper) => {
   return (
     <Layout>
-      <S.LayoutHeader>
-        <Header />
-      </S.LayoutHeader>
-      <S.Content>{children}</S.Content>
+      <ThemeProvider>
+        <S.LayoutHeader>
+          <Header />
+        </S.LayoutHeader>
+        <S.Content>{children}</S.Content>
+      </ThemeProvider>
     </Layout>
   );
 };

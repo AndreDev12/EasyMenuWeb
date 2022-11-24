@@ -11,8 +11,8 @@ export const Categories = () => {
 
   return (
     <S.Categories>
-      {categories.map(({ text, icon, id }) => (
-        <S.Category key={id} onClick={handleClick(id)}>
+      {categories.map(({ id, text, icon }) => (
+        <S.Category key={id} onClick={}>
           <Icon name={icon} />
           <RichText text={text} />
         </S.Category>

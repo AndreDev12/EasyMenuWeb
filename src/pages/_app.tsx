@@ -1,9 +1,10 @@
-import '../../styles/globals.css';
-import type { AppProps } from 'next/app';
-import { ThemeGamification } from '@gamiui/standard';
-import { NextUIProvider } from '@nextui-org/react';
 import React from 'react';
+import type { AppProps } from 'next/app';
 import { NextComponentType, NextPageContext } from 'next';
+import { ThemeGamification } from '@gamiui/standard';
+// import { NextUIProvider } from '@nextui-org/react';
+
+import '../../styles/globals.css';
 
 type TComponent = NextComponentType<NextPageContext, any, any> & {
   getLayout: (children: React.ReactNode) => React.ReactNode;
