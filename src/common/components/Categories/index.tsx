@@ -12,7 +12,7 @@ export const Categories = () => {
   return (
     <S.Categories>
       {categories.map(({ id, text, icon }) => (
-        <S.Category key={id} onClick={}>
+        <S.Category key={id} onClick={() => setId(id)}>
           <Icon name={icon} />
           <RichText text={text} />
         </S.Category>
