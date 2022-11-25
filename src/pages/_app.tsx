@@ -5,6 +5,7 @@ import { ThemeGamification } from '@gamiui/standard';
 // import { NextUIProvider } from '@nextui-org/react';
 
 import '../../styles/globals.css';
+import ThemeProvider from '../context/ThemeContext';
 
 type TComponent = NextComponentType<NextPageContext, any, any> & {
   getLayout: (children: React.ReactNode) => React.ReactNode;
@@ -16,8 +17,10 @@ export default function App({ Component, pageProps }: AppProps) {
     ((children: React.ReactNode) => children);
 
   return (
+    <ThemeProvider>
       <ThemeGamification>
         {getLayout(<Component {...pageProps} />)}
       </ThemeGamification>
+    </ThemeProvider>
   );
 }

@@ -1,13 +1,12 @@
 import { Icon, RichText } from '@gamiui/standard';
+import React from 'react';
 
+import { ThemeContext } from '../../../context/ThemeContext';
 import { categories } from '../../mocks';
 import * as S from './styles';
 
 export const Categories = () => {
-
-  // function handleClick(id){
-  //   console.log(id);
-  // }
+  const { setId } = React.useContext(ThemeContext);
 
   return (
     <S.Categories>
