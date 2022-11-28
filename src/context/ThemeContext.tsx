@@ -16,10 +16,10 @@ export interface IThemeProvider {
   children: React.ReactNode
 }
 
-const ThemeProvider = (props: IThemeProvider) => {
-  const { children } = props
+const ThemeProvider = ({children}: IThemeProvider) => {
+  // const { children } = props;
   const [id, setId] = useState(1);
-
+  // console.log(id);
   return (
     <ThemeContext.Provider
       value={{
