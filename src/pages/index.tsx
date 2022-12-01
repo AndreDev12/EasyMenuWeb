@@ -38,11 +38,15 @@ export default function Home() {
 
     return products;
   };
+  
   const handleChangePage = (page: number) => {
     console.log('test', page);
+    products = products?.slice(page, 16);
+    console.log(products);
   };
 
-  const products = findProductsByCategory();
+  let products = findProductsByCategory();
+  // const products = findProductsByCategory();
 
   return (
     <React.Fragment>
@@ -65,7 +69,13 @@ export default function Home() {
           />
         </Container>
 
-        <Container className={classNames('topics__header', 'grid')}>
+        <Container 
+          className={classNames('topics__header', 'grid')}
+          style={{ 
+            gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))',
+            gap: '1rem'
+          }}
+        >
           {products?.map(
             ({ src, title, description, price }: IProduct, index) => (
               <Product
@@ -76,7 +86,7 @@ export default function Home() {
                 price={price}
               />
             )
-          )}
+          ).slice(0, 16)}
         </Container>
 
         <Container>

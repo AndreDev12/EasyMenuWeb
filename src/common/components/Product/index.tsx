@@ -21,9 +21,9 @@ export interface IProduct {
 export const Product = ({src, title, description, price}: IProduct) => {
 
   return (
-    <Link href=''>
-      <S.Product>
-        <Card width='fit' shadow='xs' rounded='xs'>
+    <S.Product>
+      <Card width='fit' shadow='xs' rounded='xs'>
+        <Link href=''>
           <Card.Cover>
             <img
               alt=''
@@ -31,23 +31,25 @@ export const Product = ({src, title, description, price}: IProduct) => {
               src={src}
             />
           </Card.Cover>
-          <Card.Content
-            title={<RichText text={title} />}
-            description={
-              <Container>
-                <RichText text={description} />
-              </Container>
-            }
-          />
-          <S.CardFooter>
-            <Container
-              className={classNames('flex', 'justify-between')}
-              style={{ marginBottom: '1rem' }}
-            >
-              <Icon name='heart' />
-              <Title level='h3'>{price}</Title>
-            </Container>
+        </Link>
+        <Card.Content
+          title={<RichText text={title} />}
+          description={
             <Container>
+              <RichText text={description} />
+            </Container>
+          }
+        />
+        <S.CardFooter>
+          <Container
+            className={classNames('flex', 'justify-between')}
+            style={{ marginBottom: '1rem' }}
+          >
+            <Icon name='heart' />
+            <Title level='h3'>{price}</Title>
+          </Container>
+          <Container>
+            <Link href=''>
               <Button
                 type='button'
                 rounded='sm'
@@ -57,10 +59,10 @@ export const Product = ({src, title, description, price}: IProduct) => {
               >
                 View
               </Button>
-            </Container>
-          </S.CardFooter>
-        </Card>
-      </S.Product>
-    </Link>
+            </Link>
+          </Container>
+        </S.CardFooter>
+      </Card>
+    </S.Product>
   );
 };

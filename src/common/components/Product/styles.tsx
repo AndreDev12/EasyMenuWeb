@@ -9,4 +9,6 @@ export const TagContainer = styled.div`
 
 export const Product = styled(Container)`
   max-width: 300px;
+  /* margin: 0 auto; */
+  /* max-width: 100vw; */
 `;
