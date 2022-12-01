@@ -1,10 +1,16 @@
 import * as React from 'react';
+import { useContext } from 'react';
 import classNames from 'classnames';
-import { Button, Container, Icon, Modal, Tab } from '@gamiui/standard';
+import {
+  Button,
+  Container,
+  Icon,
+  Modal,
+  Pagination,
+  Tab,
+} from '@gamiui/standard';
 
 import { lightTheme } from '../../styles/design-system/theme';
-import { useContext } from 'react';
-
 import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
 import { Product } from '../common/components/Product';
@@ -12,33 +18,38 @@ import { LayoutWrapper } from '../common/layouts';
 import { productsByCategory } from '../common/mocks/products';
 import { ThemeContext } from '../context/ThemeContext';
 
+interface IProduct {
+  src: string;
+  title: string;
+  description: string;
+  price: number;
+}
+
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
-  const { id }= useContext(ThemeContext);
+  const { id } = useContext(ThemeContext);
 
   const onOpen = () => setVisible(true);
-
   const onClose = () => setVisible(false);
 
-  // let id = id;
-  // console.log(id);
-
-  let category = productsByCategory.find(( category )  => {
-    const { categoryId } = category;
-    if(id === categoryId){
+  const findProductsByCategory = () => {
+    let category = productsByCategory.find((category) => {
+      const { categoryId } = category;
+      if (id === categoryId) {
         return category;
-    }
-  })
+      }
+    });
 
-  // console.log(category);
-  const { products } = category;
-  // console.log(category?.products);
-  interface IProduct {
-    src: string;
-    title: string;
-    description: string;
-    price: number;
-  }
+    if (!category) return;
+    const { products } = category;
+
+    return products;
+  };
+  const handleChangePage = (page: number) => {
+    console.log('test', page);
+  };
+
+  const products = findProductsByCategory();
 
   return (
     <React.Fragment>
@@ -61,24 +72,26 @@ export default function Home() {
           />
         </Container>
 
-        <Container className={classNames('topics__header', 'flex')}>
-          {/* <Product /> */}
-          {
-            products.map((product: IProduct{
-              // price: any;
-              // description: any;
-              // title: any; 
-              // src: any;
-            }) => {
-               const { src, title, description, price } = product; 
-              <Product 
+        <Container className={classNames('topics__header', 'grid')}>
+          {products?.map(
+            ({ src, title, description, price }: IProduct, index) => (
+              <Product
+                key={index}
                 src={src}
                 title={title}
                 description={description}
                 price={price}
               />
-            })
-          }
+            )
+          )}
+        </Container>
+
+        <Container>
+          <Pagination
+            numberPages={5}
+            initialPage={0}
+            onChangePage={handleChangePage}
+          />
         </Container>
       </Container>
     </React.Fragment>
