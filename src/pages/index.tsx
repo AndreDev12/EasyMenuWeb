@@ -13,17 +13,10 @@ import {
 import { lightTheme } from '../../styles/design-system/theme';
 import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
-import { Product } from '../common/components/Product';
+import { IProduct, Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
 import { productsByCategory } from '../common/mocks/products';
 import { ThemeContext } from '../context/ThemeContext';
-
-interface IProduct {
-  src: string;
-  title: string;
-  description: string;
-  price: number;
-}
 
 export default function Home() {
   const [visible, setVisible] = React.useState(false);

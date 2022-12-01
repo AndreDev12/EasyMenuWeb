@@ -2,7 +2,6 @@ import React from 'react';
 import type { AppProps } from 'next/app';
 import { NextComponentType, NextPageContext } from 'next';
 import { ThemeGamification } from '@gamiui/standard';
-// import { NextUIProvider } from '@nextui-org/react';
 
 import ThemeProvider from '../context/ThemeContext';
 import '../../styles/globals.css';

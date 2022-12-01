@@ -16,12 +16,6 @@ export const Categories = () => {
           <RichText text={text} />
         </S.Category>
       ))}
-      {/* {categories.map(({ text, icon }, index: number) => (
-        <S.Category key={index}>
-          <Icon name={icon} />
-          <RichText text={text} />
-        </S.Category>
-      ))} */}
     </S.Categories>
   );
 };

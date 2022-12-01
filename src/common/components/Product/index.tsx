@@ -11,7 +11,7 @@ import classNames from 'classnames';
 
 import * as S from './styles';
 
-interface IProduct {
+export interface IProduct {
   src: string;
   title: string;
   description: string;
