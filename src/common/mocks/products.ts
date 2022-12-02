@@ -102,6 +102,36 @@ export const productsByCategory = [
                 src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
                 title: 'Agua San Mateo',
                 description: 'Bebida sin gas.',
+                price: 21.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Inca Kola',
+                description: 'Bebida Zero 500 ml.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Limonada',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Sprite 500 ML',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Coca Cola',
+                description: 'Bebida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Agua San Mateo',
+                description: 'Bebida sin gas.',
                 price: 5.00
             },
             {
@@ -109,6 +139,156 @@ export const productsByCategory = [
                 title: 'Inca Kola',
                 description: 'Bebida Zero 500 ml.',
                 price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Limonada',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Sprite 500 ML',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Coca Cola',
+                description: 'Bebida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Agua San Mateo',
+                description: 'Bebida sin gas.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Inca Kola',
+                description: 'Bebida Zero 500 ml.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Limonada',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Sprite 500 ML',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Coca Cola',
+                description: 'Bebida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Agua San Mateo',
+                description: 'Bebida sin gas.',
+                price: 22.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Inca Kola',
+                description: 'Bebida Zero 500 ml.',
+                price: 31.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Limonada',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Sprite 500 ML',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Coca Cola',
+                description: 'Bebida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Agua San Mateo',
+                description: 'Bebida sin gas.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Inca Kola',
+                description: 'Bebida Zero 500 ml.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Limonada',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Sprite 500 ML',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Coca Cola',
+                description: 'Bebida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Agua San Mateo',
+                description: 'Bebida sin gas.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Inca Kola',
+                description: 'Bebida Zero 500 ml.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Limonada',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Sprite 500 ML',
+                description: 'Bebida servida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Coca Cola',
+                description: 'Bebida sin hielo.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Agua San Mateo',
+                description: 'Bebida sin gas.',
+                price: 5.00
+            },
+            {
+                src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',
+                title: 'Inca Kola',
+                description: 'Bebida Zero 500 ml.',
+                price: 33.00
             },
             {
                 src: 'https://gw.alipayobjects.com/zos/rmsportal/JiqGstEfoWAOHiTxclqi.png',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useContext } from 'react';
+import { useContext, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import {
   Button,
@@ -21,9 +21,18 @@ import { ThemeContext } from '../context/ThemeContext';
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
   const { id } = useContext(ThemeContext);
+  const PRODUCTS_BY_PAGE = 16;
+
+  const [productsTest, setProductsTest] = useState([]);
+  const [page, setPage] = useState(0);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
+
+  useEffect(() => {
+    findProductsByCategory();
+  }, [page])
+  
 
   const findProductsByCategory = () => {
     let category = productsByCategory.find((category) => {
@@ -36,17 +45,22 @@ export default function Home() {
     if (!category) return;
     const { products } = category;
 
-    return products;
+    // return products;
+    setProductsTest(products);
   };
+  // findProductsByCategory();
+  // let products = findProductsByCategory();
+  // console.log(products);
   
   const handleChangePage = (page: number) => {
     console.log('test', page);
-    products = products?.slice(page, 16);
-    console.log(products);
+    let result = productsTest?.slice(page * PRODUCTS_BY_PAGE, (page + 1) * PRODUCTS_BY_PAGE);
+    setProductsTest(result);
+    // console.log(result);
   };
-
-  let products = findProductsByCategory();
-  // const products = findProductsByCategory();
+  // (0, 16) - 16 productos
+  // (16, 32) - 16 productos
+  // (32, 48) - 16 productos
 
   return (
     <React.Fragment>
@@ -76,7 +90,7 @@ export default function Home() {
             gap: '1rem'
           }}
         >
-          {products?.map(
+          {productsTest?.map(
             ({ src, title, description, price }: IProduct, index) => (
               <Product
                 key={index}
@@ -93,7 +107,7 @@ export default function Home() {
           <Pagination
             numberPages={5}
             initialPage={0}
-            onChangePage={handleChangePage}
+            onChangePage={page => handleChangePage(page)}
           />
         </Container>
       </Container>
