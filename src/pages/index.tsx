@@ -23,7 +23,7 @@ export default function Home() {
   const { id } = useContext(ThemeContext);
   const PRODUCTS_BY_PAGE = 16;
 
-  const [productsTest, setProductsTest] = useState<IProduct[]>;
+  const [productsTest, setProductsTest] = useState<IProduct[]>();
   const [page, setPage] = useState(0);
 
   const onOpen = () => setVisible(true);
