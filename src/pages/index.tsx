@@ -22,7 +22,6 @@ export default function Home() {
   const [visible, setVisible] = React.useState(false);
   const [productsTest, setProductsTest] = useState<IProduct[]>([]);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
-  const [page, setPage] = useState(0);
   const { id } = useContext(ThemeContext);
   
   const PRODUCTS_BY_PAGE = 16;
@@ -31,7 +30,7 @@ export default function Home() {
 
   useEffect(() => {
     findProductsByCategory();
-  }, [page, id])
+  }, [id])
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
