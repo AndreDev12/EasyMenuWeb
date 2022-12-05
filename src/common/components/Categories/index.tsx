@@ -1,19 +1,22 @@
 import { Icon, RichText } from '@gamiui/standard';
 import React from 'react';
 
+import { lightTheme } from '../../../../styles/design-system/theme';
 import { ThemeContext } from '../../../context/ThemeContext';
 import { categories } from '../../mocks';
 import * as S from './styles';
 
 export const Categories = () => {
-  const { setId } = React.useContext(ThemeContext);
+  const { id, setId } = React.useContext(ThemeContext);
 
   return (
     <S.Categories>
-      {categories.map(({ id, text, icon }) => (
-        <S.Category key={id} onClick={() => setId(id)}>
+      {categories.map(({ idCategory, text, icon }) => (
+        <S.Category key={idCategory} onClick={() => setId(idCategory)}>
           <Icon name={icon} />
-          <RichText text={text} />
+          <RichText text={text} style={ idCategory === id && {
+            color: lightTheme.extended.oceanStrong
+          }} />
         </S.Category>
       ))}
     </S.Categories>
