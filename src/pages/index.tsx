@@ -20,11 +20,14 @@ import { ThemeContext } from '../context/ThemeContext';
 
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
-  const [productsTest, setProductsTest] = useState<IProduct[]>();
+  const [productsTest, setProductsTest] = useState<IProduct[]>([]);
+  const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [page, setPage] = useState(0);
   const { id } = useContext(ThemeContext);
   
   const PRODUCTS_BY_PAGE = 16;
+  const numberPages = Math.ceil((productsTest?.length??0) / PRODUCTS_BY_PAGE);
+  console.log(numberPages);
 
   useEffect(() => {
     findProductsByCategory();
@@ -46,6 +49,7 @@ export default function Home() {
 
     // return products;
     setProductsTest(products);
+    setProductsByPage(products.slice(0, 16));
   };
   // findProductsByCategory();
   // let products = findProductsByCategory();
@@ -54,7 +58,7 @@ export default function Home() {
   const handleChangePage = (page: number) => {
     console.log('test', page);
     let result = productsTest?.slice(page * PRODUCTS_BY_PAGE, (page + 1) * PRODUCTS_BY_PAGE);
-    setProductsTest(result);
+    setProductsByPage(result);
     // console.log(result);
   };
   // (0, 16) - 16 productos
@@ -89,7 +93,7 @@ export default function Home() {
             gap: '1rem'
           }}
         >
-          {productsTest?.map(
+          {productsByPage?.map(
             ({ src, title, description, price }: IProduct, index) => (
               <Product
                 key={index}
@@ -99,15 +103,18 @@ export default function Home() {
                 price={price}
               />
             )
-          ).slice(0, 16)}
+          )}
         </Container>
 
         <Container>
-          <Pagination
-            numberPages={5}
+          {
+            numberPages >= 1 &&
+            (<Pagination
+            numberPages={numberPages}
             initialPage={0}
             onChangePage={page => handleChangePage(page)}
-          />
+          />)
+          }
         </Container>
       </Container>
     </React.Fragment>
