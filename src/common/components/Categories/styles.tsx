@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Container } from '@gamiui/standard';
+import { Container, RichText } from '@gamiui/standard';
 
 export const Categories = styled(Container)`
   background-color: white;
@@ -24,4 +24,8 @@ export const Category = styled(Container)`
   &:hover {
     cursor: pointer;
   }
+`;
+
+export const CategoryTitle = styled(RichText)<{color?: string}>`
+  color: ${({color}) => color}
 `;
