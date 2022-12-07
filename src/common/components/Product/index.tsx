@@ -12,13 +12,14 @@ import classNames from 'classnames';
 import * as S from './styles';
 
 export interface IProduct {
-  src: string;
-  title: string;
   description: string;
+  id?: number;
+  imageUrl: string;
   price: number;
+  title: string;
 }
 
-export const Product = ({src, title, description, price}: IProduct) => {
+export const Product = ({ description, imageUrl, price, title }: IProduct) => {
 
   return (
     <S.Product>
@@ -26,9 +27,9 @@ export const Product = ({src, title, description, price}: IProduct) => {
         <Link href=''>
           <Card.Cover>
             <img
-              alt=''
+              alt={title}
               width='100%'
-              src={src}
+              src={imageUrl}
             />
           </Card.Cover>
         </Link>

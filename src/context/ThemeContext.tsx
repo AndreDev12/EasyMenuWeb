@@ -2,14 +2,14 @@ import * as React from 'react';
 import { createContext, useState } from 'react';
 
 export interface IThemeContext {
-  id: number;
-  setId: (id: number) => void;
+  idCategory: number;
+  setIdCategory: (id: number) => void;
 }
 
 //GENERICS TYPESCRIPT
 export const ThemeContext = createContext<IThemeContext>({
-  id: 1,
-  setId: () => {},
+  idCategory: 1,
+  setIdCategory: () => {},
 });
 
 export interface IThemeProvider {
@@ -18,13 +18,13 @@ export interface IThemeProvider {
 
 const ThemeProvider = ({children}: IThemeProvider) => {
   // const { children } = props;
-  const [id, setId] = useState(1);
+  const [idCategory, setIdCategory] = useState(1);
   // console.log(id);
   return (
     <ThemeContext.Provider
       value={{
-        id,
-        setId,
+        idCategory,
+        setIdCategory,
       }}
     >
       {children}

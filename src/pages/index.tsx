@@ -15,48 +15,60 @@ import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
 import { IProduct, Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
-import { productsByCategory } from '../common/mocks/products';
+// import { productsByCategory } from '../common/mocks/products';
 import { ThemeContext } from '../context/ThemeContext';
+import { get } from '../config/api';
 
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
-  const [productsTest, setProductsTest] = useState<IProduct[]>([]);
+  const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
-  const { id } = useContext(ThemeContext);
+  const { idCategory } = useContext(ThemeContext);
   
   const PRODUCTS_BY_PAGE = 16;
-  const numberPages = Math.ceil((productsTest?.length??0) / PRODUCTS_BY_PAGE);
-  console.log(numberPages);
+  const numberPages = Math.ceil((totalProducts?.length??0) / PRODUCTS_BY_PAGE);
+  // console.log(numberPages);
+
+  // useEffect(() => {
+  //   findProductsByCategory();
+  // }, [idCategory])
 
   useEffect(() => {
-    findProductsByCategory();
-  }, [id])
+    try {
+      get('dishes')
+        .then(res => setProductsByPage(res.data))
+    } catch (e) {
+      console.log(e);
+    }
+  }, [])
+  console.log(totalProducts);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
 
-  const findProductsByCategory = () => {
-    let category = productsByCategory.find((category) => {
-      const { categoryId } = category;
-      if (id === categoryId) {
-        return category;
-      }
-    });
+  // const findProductsByCategory = () => {
+  //   let category = productsByCategory.find((category) => {
+  //     const { categoryId } = category;
+  //     if (idCategory === categoryId) {
+  //       return category;
+  //     }
+  //   });
 
-    if (!category) return;
-    const { products } = category;
+  //   if (!category) return;
+  //   const { products } = category;
 
-    // return products;
-    setProductsTest(products);
-    setProductsByPage(products.slice(0, 16));
-  };
+  //   setTotalProducts(products);
+  //   setProductsByPage(products.slice(0, 16));
+  // };
+
   // findProductsByCategory();
   // let products = findProductsByCategory();
   // console.log(products);
+  console.log(productsByPage);
   
   const handleChangePage = (page: number) => {
     console.log('test', page);
-    let result = productsTest?.slice(page * PRODUCTS_BY_PAGE, (page + 1) * PRODUCTS_BY_PAGE);
+    let result = totalProducts?.slice(page * PRODUCTS_BY_PAGE, (page + 1) * PRODUCTS_BY_PAGE);
     setProductsByPage(result);
     // console.log(result);
   };
@@ -93,13 +105,13 @@ export default function Home() {
           }}
         >
           {productsByPage?.map(
-            ({ src, title, description, price }: IProduct, index) => (
+            ({ description, id, imageUrl, price, title }: IProduct, index) => (
               <Product
-                key={index}
-                src={src}
-                title={title}
+                key={id}
                 description={description}
+                imageUrl={imageUrl}
                 price={price}
+                title={title}
               />
             )
           )}
