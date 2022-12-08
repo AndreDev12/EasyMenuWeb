@@ -36,12 +36,16 @@ export default function Home() {
   useEffect(() => {
     try {
       get('dishes')
-        .then(res => setProductsByPage(res.data))
+        .then(res => {
+          setTotalProducts(res.data)
+          setProductsByPage(res.data.slice(0, 16))
+        })
     } catch (e) {
       console.log(e);
     }
   }, [])
   console.log(totalProducts);
+  console.log(productsByPage);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
@@ -60,10 +64,6 @@ export default function Home() {
   //   setTotalProducts(products);
   //   setProductsByPage(products.slice(0, 16));
   // };
-
-  // findProductsByCategory();
-  // let products = findProductsByCategory();
-  // console.log(products);
   console.log(productsByPage);
   
   const handleChangePage = (page: number) => {
@@ -105,7 +105,7 @@ export default function Home() {
           }}
         >
           {productsByPage?.map(
-            ({ description, id, imageUrl, price, title }: IProduct, index) => (
+            ({ description, id, imageUrl, price, title }: IProduct) => (
               <Product
                 key={id}
                 description={description}
@@ -121,10 +121,10 @@ export default function Home() {
           {
             numberPages >= 1 &&
             (<Pagination
-            numberPages={numberPages}
-            initialPage={0}
-            onChangePage={page => handleChangePage(page)}
-          />)
+                numberPages={numberPages}
+                initialPage={0}
+                onChangePage={page => handleChangePage(page)}
+            />)
           }
         </Container>
       </Container>
