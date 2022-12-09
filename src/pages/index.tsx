@@ -15,37 +15,53 @@ import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
 import { IProduct, Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
-// import { productsByCategory } from '../common/mocks/products';
 import { ThemeContext } from '../context/ThemeContext';
 import { get } from '../config/api';
 
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
-  const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
+  const [totalItems, setTotalItems] = useState(0);
+  const [page, setPage] = useState(0);
   const { idCategory } = useContext(ThemeContext);
+  // const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
   
-  const PRODUCTS_BY_PAGE = 16;
-  const numberPages = Math.ceil((totalProducts?.length??0) / PRODUCTS_BY_PAGE);
+  const SIZE_BY_PAGE = 5;
+  let pageNumber = 1 + page;
+  const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
+  // const PRODUCTS_BY_PAGE = 16;
+  // const numberPages = Math.ceil((totalProducts?.length??0) / PRODUCTS_BY_PAGE);
   // console.log(numberPages);
 
   // useEffect(() => {
   //   findProductsByCategory();
   // }, [idCategory])
+  // /dishes/categories/1?page=1&sizeByPage=3
+
+  // useEffect(() => {
+  //   try {
+  //     get('dishes')
+  //       .then(res => {
+  //         setTotalProducts(res.data)
+  //         setProductsByPage(res.data.slice(0, 16))
+  //       })
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // }, [])
 
   useEffect(() => {
     try {
-      get('dishes')
-        .then(res => {
-          setTotalProducts(res.data)
-          setProductsByPage(res.data.slice(0, 16))
-        })
+      get(`dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}`)
+      .then(res => {
+        setProductsByPage(res.data);
+        setTotalItems(res.metaData.pagination.totalItems);
+        console.log(res);
+      })
     } catch (e) {
       console.log(e);
     }
-  }, [])
-  console.log(totalProducts);
-  console.log(productsByPage);
+  }, [idCategory, pageNumber])
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
@@ -64,17 +80,19 @@ export default function Home() {
   //   setTotalProducts(products);
   //   setProductsByPage(products.slice(0, 16));
   // };
-  console.log(productsByPage);
   
   const handleChangePage = (page: number) => {
     console.log('test', page);
-    let result = totalProducts?.slice(page * PRODUCTS_BY_PAGE, (page + 1) * PRODUCTS_BY_PAGE);
-    setProductsByPage(result);
+    setPage(page);
+    // let result = totalProducts?.slice(page * SIZE_BY_PAGE, (page + 1) * SIZE_BY_PAGE);
+    // setProductsByPage(result);
     // console.log(result);
+
   };
-  // (0, 16) - 16 productos
-  // (16, 32) - 16 productos
-  // (32, 48) - 16 productos
+  // (0, 5) - 5 productos
+  // (5, 10) - 5 productos
+  // (10, 15) - 5 productos
+  // (15, 20) - 1 producto
 
   return (
     <React.Fragment>
