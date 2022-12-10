@@ -22,6 +22,7 @@ export const Categories = () => {
   }, []);
 
   // console.log(categories);
+  // console.log(idCategory);
   
   return (
     <S.Categories>
@@ -29,7 +30,7 @@ export const Categories = () => {
         <S.Category key={id} onClick={() => setIdCategory(id)}>
           <Icon 
             name={icon}
-            color={id === idCategory ? lightTheme.extended.oceanStrong : lightTheme.primary.jordyBlue} 
+            color={id === idCategory ? lightTheme.extended.oceanStrong : lightTheme.primary.jordyBlue}
             // color={id === idCategory ? lightTheme.extended.oceanStrong : 'initial'}
           />
           <S.CategoryTitle 

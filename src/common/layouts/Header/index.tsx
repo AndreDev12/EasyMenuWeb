@@ -12,7 +12,18 @@ import * as S from './styles';
 import classNames from 'classnames';
 import { lightTheme } from '../../../../styles/design-system/theme';
 
+//searchDebounce
 export const Header = () => {
+  const {setSearchDebounce} = React.useContext()
+  const [search,setSearch] = React.useState("")
+
+  const handleChangeInput = (e) => {
+      const {target: value}
+
+      setSearch(value)
+      setSearchDebounce(value)
+  }
+
   return (
     <S.Header
       padding='1rem'

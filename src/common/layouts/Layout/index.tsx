@@ -1,5 +1,6 @@
-import { Layout } from '@gamiui/standard';
 import * as React from 'react';
+import { Layout } from '@gamiui/standard';
+
 import { Header, Footer } from '..';
 import * as S from './styles';
 

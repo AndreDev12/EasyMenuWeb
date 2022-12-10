@@ -23,9 +23,9 @@ export default function Home() {
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [page, setPage] = useState(0);
-  const { idCategory } = useContext(ThemeContext);
+  const { idCategory, searchDebounce } = useContext(ThemeContext);
   // const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
-  
+
   const SIZE_BY_PAGE = 5;
   let pageNumber = 1 + page;
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
@@ -52,16 +52,17 @@ export default function Home() {
 
   useEffect(() => {
     try {
-      get(`dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}`)
-      .then(res => {
+      get(
+        `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search={${searchDebounce}}`
+      ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
         console.log(res);
-      })
+      });
     } catch (e) {
       console.log(e);
     }
-  }, [idCategory, pageNumber])
+  }, [idCategory, pageNumber, searchDebounce]);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
@@ -80,14 +81,13 @@ export default function Home() {
   //   setTotalProducts(products);
   //   setProductsByPage(products.slice(0, 16));
   // };
-  
+
   const handleChangePage = (page: number) => {
     console.log('test', page);
     setPage(page);
     // let result = totalProducts?.slice(page * SIZE_BY_PAGE, (page + 1) * SIZE_BY_PAGE);
     // setProductsByPage(result);
     // console.log(result);
-
   };
   // (0, 5) - 5 productos
   // (5, 10) - 5 productos
@@ -115,11 +115,11 @@ export default function Home() {
           />
         </Container>
 
-        <Container 
+        <Container
           className={classNames('topics__header', 'grid')}
-          style={{ 
+          style={{
             gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))',
-            gap: '1rem'
+            gap: '1rem',
           }}
         >
           {productsByPage?.map(
@@ -136,14 +136,13 @@ export default function Home() {
         </Container>
 
         <Container>
-          {
-            numberPages >= 1 &&
-            (<Pagination
-                numberPages={numberPages}
-                initialPage={0}
-                onChangePage={page => handleChangePage(page)}
-            />)
-          }
+          {numberPages >= 1 && (
+            <Pagination
+              numberPages={numberPages}
+              initialPage={0}
+              onChangePage={(page) => handleChangePage(page)}
+            />
+          )}
         </Container>
       </Container>
     </React.Fragment>

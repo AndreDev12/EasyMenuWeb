@@ -4,6 +4,8 @@ import { createContext, useState } from 'react';
 export interface IThemeContext {
   idCategory: number;
   setIdCategory: (id: number) => void;
+  searchDebounce: string;
+  setSearchDebounce: (value: string) => void;
 }
 
 //GENERICS TYPESCRIPT
@@ -13,18 +15,21 @@ export const ThemeContext = createContext<IThemeContext>({
 });
 
 export interface IThemeProvider {
-  children: React.ReactNode
+  children: React.ReactNode;
 }
 
-const ThemeProvider = ({children}: IThemeProvider) => {
-  // const { children } = props;
+const ThemeProvider = ({ children }: IThemeProvider) => {
+
   const [idCategory, setIdCategory] = useState(1);
-  // console.log(id);
+  const [searchDebounce, setSearchDebounce] = useDebounce<string>("");
+  
   return (
     <ThemeContext.Provider
       value={{
         idCategory,
         setIdCategory,
+        searchDebounce,
+        setSearchDebounce,
       }}
     >
       {children}
