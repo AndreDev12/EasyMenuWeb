@@ -1,17 +1,23 @@
 import * as React from 'react';
 import { createContext, useState } from 'react';
 
+import useDebounce from '../common/components/hooks/useDebounce';
+
 export interface IThemeContext {
   idCategory: number;
+  value: string;
   setIdCategory: (id: number) => void;
-  searchDebounce: string;
-  setSearchDebounce: (value: string) => void;
+  setValue: (value: string) => void;
+  // searchDebounce: string;
+  // setSearchDebounce: (value: string) => void;
 }
 
 //GENERICS TYPESCRIPT
 export const ThemeContext = createContext<IThemeContext>({
   idCategory: 1,
+  value: '',
   setIdCategory: () => {},
+  setValue: () => {}
 });
 
 export interface IThemeProvider {
@@ -21,15 +27,19 @@ export interface IThemeProvider {
 const ThemeProvider = ({ children }: IThemeProvider) => {
 
   const [idCategory, setIdCategory] = useState(1);
-  const [searchDebounce, setSearchDebounce] = useDebounce<string>("");
+  const [value, setValue] = useState('');
+  // const [searchDebounce, setSearchDebounce] = useDebounce<string>("");
+  const debouncedValue = useDebounce(value, 500);
   
   return (
     <ThemeContext.Provider
       value={{
         idCategory,
+        value,
         setIdCategory,
-        searchDebounce,
-        setSearchDebounce,
+        setValue,
+        // searchDebounce,
+        // setSearchDebounce,
       }}
     >
       {children}

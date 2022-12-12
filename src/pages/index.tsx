@@ -23,7 +23,7 @@ export default function Home() {
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [page, setPage] = useState(0);
-  const { idCategory, searchDebounce } = useContext(ThemeContext);
+  // const { idCategory, searchDebounce } = useContext(ThemeContext);
   // const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
 
   const SIZE_BY_PAGE = 5;
