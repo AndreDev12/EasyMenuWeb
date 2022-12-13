@@ -142,6 +142,7 @@ export default function Home() {
               numberPages={numberPages}
               initialPage={0}
               onChangePage={(page) => handleChangePage(page)}
+              page={page}
             />
           )}
         </Container>
