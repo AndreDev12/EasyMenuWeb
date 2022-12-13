@@ -23,8 +23,8 @@ export default function Home() {
   const [visible, setVisible] = React.useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
-  const [page, setPage] = useState(0);
-  const { idCategory, value } = useContext(ThemeContext);
+  // const [page, setPage] = useState(0);
+  const { idCategory, value, page, setPage } = useContext(ThemeContext);
   const debouncedValue = useDebounce(value, 500);
   // const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
 
@@ -60,13 +60,14 @@ export default function Home() {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
         console.log(res);
+        // setPage(0);
       });
     } catch (e) {
       console.log(e);
     }
   }, [idCategory, pageNumber, debouncedValue]);
 
-  // console.log(value);
+  // console.log(page);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);

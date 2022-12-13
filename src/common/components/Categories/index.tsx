@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Icon } from '@gamiui/standard';
 
+import * as S from './styles';
 import { lightTheme } from '../../../../styles/design-system/theme';
 import { ThemeContext } from '../../../context/ThemeContext';
-import * as S from './styles';
 import { get } from '../../../config/api';
 
 export const Categories = () => {
-  const { idCategory, setIdCategory } = React.useContext(ThemeContext);
+  const { idCategory, setIdCategory, page, setPage } = React.useContext(ThemeContext);
   const [categories, setCategories] = useState([]);
 
   const icon = 'share' as const;
@@ -22,12 +22,16 @@ export const Categories = () => {
   }, []);
 
   // console.log(categories);
-  // console.log(idCategory);
+  console.log(page);
   
   return (
     <S.Categories>
       {categories.map(({ id, title }) => (
-        <S.Category key={id} onClick={() => setIdCategory(id)}>
+        <S.Category key={id} onClick={() => {
+          setPage(0)
+          setIdCategory(id)
+          }}
+        >
           <Icon 
             name={icon}
             color={id === idCategory ? lightTheme.extended.oceanStrong : lightTheme.primary.jordyBlue}
