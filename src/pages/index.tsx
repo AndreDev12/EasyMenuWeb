@@ -17,13 +17,15 @@ import { IProduct, Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
 import { ThemeContext } from '../context/ThemeContext';
 import { get } from '../config/api';
+import useDebounce from '../common/components/hooks/useDebounce';
 
 export default function Home() {
   const [visible, setVisible] = React.useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [page, setPage] = useState(0);
-  // const { idCategory, searchDebounce } = useContext(ThemeContext);
+  const { idCategory, value } = useContext(ThemeContext);
+  const debouncedValue = useDebounce(value, 500);
   // const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
 
   const SIZE_BY_PAGE = 5;
@@ -53,7 +55,7 @@ export default function Home() {
   useEffect(() => {
     try {
       get(
-        `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search={${searchDebounce}}`
+        `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
@@ -62,7 +64,9 @@ export default function Home() {
     } catch (e) {
       console.log(e);
     }
-  }, [idCategory, pageNumber, searchDebounce]);
+  }, [idCategory, pageNumber, debouncedValue]);
+
+  console.log(value);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);

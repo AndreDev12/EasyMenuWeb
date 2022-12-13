@@ -10,23 +10,25 @@ import {
 } from '@gamiui/standard';
 
 import { ThemeContext } from '../../../context/ThemeContext';
-import * as S from './styles';
 import { lightTheme } from '../../../../styles/design-system/theme';
+import * as S from './styles';
 
 //searchDebounce
 export const Header = () => {
   // const { setSearchDebounce } = React.useContext()
-  const [search, setSearch] = React.useState("");
-  const { setValue } = React.useContext(ThemeContext);
+  const { value, setValue } = React.useContext(ThemeContext);
 
-  const handleChange = ({target}: React.FormEvent<HTMLDivElement>) => {
-    setValue(target.value);
+  // const handleChange = ({target}: React.ChangeEvent<HTMLInputElement>) => {
+  //   setValue(target.value);
+  //   // console.log(target.value);
+  //     // const {target: value}
+  //     // setSearch(value)
+  //     // setSearchDebounce(value)
+  // }
 
-      // const {target: value}
+  const handleChange = (newValue: string) => setValue(newValue);
 
-      // setSearch(value)
-      // setSearchDebounce(value)
-  }
+  console.log(value);
 
   return (
     <S.Header
@@ -45,8 +47,10 @@ export const Header = () => {
         <Input
           placeholder='Search you are thinking...'
           prefix={<Icon name='setting' color={lightTheme.neutral[300]} />}
-          positionPrefix='right'}
-          onChange={handleChange}
+          positionPrefix='right'
+          // onChange={handleChange}
+          value={value}
+          onChangeFormItem={handleChange}
         />
       </Container>
       <Container

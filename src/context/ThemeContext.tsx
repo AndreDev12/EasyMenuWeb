@@ -8,8 +8,6 @@ export interface IThemeContext {
   value: string;
   setIdCategory: (id: number) => void;
   setValue: (value: string) => void;
-  // searchDebounce: string;
-  // setSearchDebounce: (value: string) => void;
 }
 
 //GENERICS TYPESCRIPT
@@ -28,8 +26,6 @@ const ThemeProvider = ({ children }: IThemeProvider) => {
 
   const [idCategory, setIdCategory] = useState(1);
   const [value, setValue] = useState('');
-  // const [searchDebounce, setSearchDebounce] = useDebounce<string>("");
-  const debouncedValue = useDebounce(value, 500);
   
   return (
     <ThemeContext.Provider
@@ -37,9 +33,7 @@ const ThemeProvider = ({ children }: IThemeProvider) => {
         idCategory,
         value,
         setIdCategory,
-        setValue,
-        // searchDebounce,
-        // setSearchDebounce,
+        setValue
       }}
     >
       {children}
