@@ -66,7 +66,7 @@ export default function Home() {
     }
   }, [idCategory, pageNumber, debouncedValue]);
 
-  console.log(value);
+  // console.log(value);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
@@ -93,10 +93,6 @@ export default function Home() {
     // setProductsByPage(result);
     // console.log(result);
   };
-  // (0, 5) - 5 productos
-  // (5, 10) - 5 productos
-  // (10, 15) - 5 productos
-  // (15, 20) - 1 producto
 
   return (
     <React.Fragment>

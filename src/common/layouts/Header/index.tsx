@@ -13,18 +13,9 @@ import { ThemeContext } from '../../../context/ThemeContext';
 import { lightTheme } from '../../../../styles/design-system/theme';
 import * as S from './styles';
 
-//searchDebounce
 export const Header = () => {
-  // const { setSearchDebounce } = React.useContext()
-  const { value, setValue } = React.useContext(ThemeContext);
 
-  // const handleChange = ({target}: React.ChangeEvent<HTMLInputElement>) => {
-  //   setValue(target.value);
-  //   // console.log(target.value);
-  //     // const {target: value}
-  //     // setSearch(value)
-  //     // setSearchDebounce(value)
-  // }
+  const { value, setValue } = React.useContext(ThemeContext);
 
   const handleChange = (newValue: string) => setValue(newValue);
 
