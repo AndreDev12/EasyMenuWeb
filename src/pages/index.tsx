@@ -2,12 +2,11 @@ import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
 import classNames from 'classnames';
 import {
-  Button,
   Container,
-  Icon,
   Modal,
   Pagination,
-  Tab,
+  Empty,
+  Loader
 } from '@gamiui/standard';
 
 import { lightTheme } from '../../styles/design-system/theme';
@@ -20,79 +19,39 @@ import { get } from '../config/api';
 import useDebounce from '../common/components/hooks/useDebounce';
 
 export default function Home() {
-  const [visible, setVisible] = React.useState(false);
+  const [visible, setVisible] = useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
-  // const [page, setPage] = useState(0);
   const { idCategory, value, page, setPage } = useContext(ThemeContext);
+  const [loading, setLoading] = useState(false);
   const debouncedValue = useDebounce(value, 500);
-  // const [totalProducts, setTotalProducts] = useState<IProduct[]>([]);
 
   const SIZE_BY_PAGE = 5;
   let pageNumber = 1 + page;
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
-  // const PRODUCTS_BY_PAGE = 16;
-  // const numberPages = Math.ceil((totalProducts?.length??0) / PRODUCTS_BY_PAGE);
-  // console.log(numberPages);
-
-  // useEffect(() => {
-  //   findProductsByCategory();
-  // }, [idCategory])
-  // /dishes/categories/1?page=1&sizeByPage=3
-
-  // useEffect(() => {
-  //   try {
-  //     get('dishes')
-  //       .then(res => {
-  //         setTotalProducts(res.data)
-  //         setProductsByPage(res.data.slice(0, 16))
-  //       })
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // }, [])
 
   useEffect(() => {
+    setLoading(true);
     try {
       get(
         `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
+        // setLoading(false);
         console.log(res);
-        // setPage(0);
       });
     } catch (e) {
       console.log(e);
     }
   }, [idCategory, pageNumber, debouncedValue]);
 
-  // console.log(page);
-
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
-
-  // const findProductsByCategory = () => {
-  //   let category = productsByCategory.find((category) => {
-  //     const { categoryId } = category;
-  //     if (idCategory === categoryId) {
-  //       return category;
-  //     }
-  //   });
-
-  //   if (!category) return;
-  //   const { products } = category;
-
-  //   setTotalProducts(products);
-  //   setProductsByPage(products.slice(0, 16));
-  // };
 
   const handleChangePage = (page: number) => {
     console.log('test', page);
     setPage(page);
-    // let result = totalProducts?.slice(page * SIZE_BY_PAGE, (page + 1) * SIZE_BY_PAGE);
-    // setProductsByPage(result);
-    // console.log(result);
   };
 
   return (
@@ -123,7 +82,12 @@ export default function Home() {
             gap: '1rem',
           }}
         >
-          {productsByPage?.map(
+          {loading ? (
+            <Loader.Wrapper children={React.Children}>
+              <Loader type="spinner"></Loader>
+            </Loader.Wrapper>
+          ) : 
+          productsByPage?.map(
             ({ description, id, imageUrl, price, title }: IProduct) => (
               <Product
                 key={id}
@@ -134,6 +98,14 @@ export default function Home() {
               />
             )
           )}
+        </Container>
+
+        <Container>
+          {
+            !productsByPage.length && (
+              <Empty text='No encontramos ningún producto para la búsqueda, intente con otro nombre.' />
+            )
+          }
         </Container>
 
         <Container>

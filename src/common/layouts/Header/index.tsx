@@ -39,7 +39,6 @@ export const Header = () => {
           placeholder='Search you are thinking...'
           prefix={<Icon name='setting' color={lightTheme.neutral[300]} />}
           positionPrefix='right'
-          // onChange={handleChange}
           value={value}
           onChangeFormItem={handleChange}
         />

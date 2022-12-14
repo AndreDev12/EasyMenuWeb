@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Icon } from '@gamiui/standard';
 
 import * as S from './styles';
@@ -7,7 +7,7 @@ import { ThemeContext } from '../../../context/ThemeContext';
 import { get } from '../../../config/api';
 
 export const Categories = () => {
-  const { idCategory, setIdCategory, page, setPage } = React.useContext(ThemeContext);
+  const { idCategory, setIdCategory, setPage } = useContext(ThemeContext);
   const [categories, setCategories] = useState([]);
 
   const icon = 'share' as const;
@@ -20,9 +20,6 @@ export const Categories = () => {
       console.log(e);
     }
   }, []);
-
-  // console.log(categories);
-  console.log(page);
   
   return (
     <S.Categories>

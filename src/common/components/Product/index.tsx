@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import classNames from 'classnames';
 import {
   Button,
   Card,
@@ -7,7 +8,6 @@ import {
   RichText,
   Title,
 } from '@gamiui/standard';
-import classNames from 'classnames';
 
 import * as S from './styles';
 

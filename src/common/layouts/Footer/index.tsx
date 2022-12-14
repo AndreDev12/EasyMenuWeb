@@ -1,6 +1,6 @@
+import * as React from 'react';
 import { Container, Button, Icon } from '@gamiui/standard';
 import classNames from 'classnames';
-import * as React from 'react';
 
 export const Footer = () => {
   return (
