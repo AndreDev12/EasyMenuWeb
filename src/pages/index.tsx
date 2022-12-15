@@ -15,15 +15,16 @@ import { News } from '../common/components/News';
 import { IProduct, Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
 import { ThemeContext } from '../context/ThemeContext';
-import { get } from '../config/api';
 import useDebounce from '../common/components/hooks/useDebounce';
+import { get } from '../config/api';
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
+  const [loading, setLoading] = useState(true);
+  const [showMessage, setShowMessage] = useState(false);
   const { idCategory, value, page, setPage } = useContext(ThemeContext);
-  const [loading, setLoading] = useState(false);
   const debouncedValue = useDebounce(value, 500);
 
   const SIZE_BY_PAGE = 5;
@@ -31,16 +32,18 @@ export default function Home() {
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
 
   useEffect(() => {
-    setLoading(true);
+    // setLoading(true);
     try {
       get(
         `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
-        // setLoading(false);
+        setLoading(false);
+        setShowMessage(false);
         console.log(res);
-      });
+        !res.data.length && setShowMessage(true);
+      })
     } catch (e) {
       console.log(e);
     }
@@ -102,7 +105,7 @@ export default function Home() {
 
         <Container>
           {
-            !productsByPage.length && (
+            showMessage && (
               <Empty text='No encontramos ningún producto para la búsqueda, intente con otro nombre.' />
             )
           }
