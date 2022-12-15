@@ -22,7 +22,7 @@ export default function Home() {
   const [visible, setVisible] = useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
   const [totalItems, setTotalItems] = useState(0);
-  const [loading, setLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
   const { idCategory, value, page, setPage } = useContext(ThemeContext);
   const debouncedValue = useDebounce(value, 500);
@@ -32,14 +32,14 @@ export default function Home() {
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
 
   useEffect(() => {
-    // setLoading(true);
+    // setIsLoading(true);
     try {
       get(
         `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
-        setLoading(false);
+        // setIsLoading(false);
         setShowMessage(false);
         console.log(res);
         !res.data.length && setShowMessage(true);
@@ -85,9 +85,12 @@ export default function Home() {
             gap: '1rem',
           }}
         >
-          {loading ? (
-            <Loader.Wrapper children={React.Children}>
-              <Loader type="spinner"></Loader>
+          {isLoading ? (
+            <Loader.Wrapper 
+              minHeight='800px'
+              isLoading={isLoading}
+              loaderNode={<Loader type='spinner'></Loader>}
+            >
             </Loader.Wrapper>
           ) : 
           productsByPage?.map(
