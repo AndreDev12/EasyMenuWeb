@@ -32,17 +32,16 @@ export default function Home() {
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
 
   useEffect(() => {
-    // setIsLoading(true);
     try {
       get(
         `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
-        // setIsLoading(false);
+        setIsLoading(false);
         setShowMessage(false);
-        console.log(res);
         !res.data.length && setShowMessage(true);
+        console.log(res);
       })
     } catch (e) {
       console.log(e);
@@ -85,25 +84,35 @@ export default function Home() {
             gap: '1rem',
           }}
         >
-          {isLoading ? (
-            <Loader.Wrapper 
-              minHeight='800px'
-              isLoading={isLoading}
-              loaderNode={<Loader type='spinner'></Loader>}
-            >
-            </Loader.Wrapper>
-          ) : 
-          productsByPage?.map(
-            ({ description, id, imageUrl, price, title }: IProduct) => (
-              <Product
-                key={id}
-                description={description}
-                imageUrl={imageUrl}
-                price={price}
-                title={title}
-              />
+          {
+            !isLoading && (
+              productsByPage?.map(
+                ({ description, id, imageUrl, price, title }: IProduct) => (
+                  <Product
+                    key={id}
+                    description={description}
+                    imageUrl={imageUrl}
+                    price={price}
+                    title={title}
+                  />
+                )
+              )
             )
-          )}
+          }
+        </Container>
+
+        <Container>
+          {
+            isLoading && (
+              <Loader.Wrapper 
+                minHeight='800px'
+                isLoading={isLoading}
+                loaderNode={<Loader type='spinner'></Loader>}
+                className={classNames('flex', 'align-center')}
+              >
+              </Loader.Wrapper>
+            )
+          }
         </Container>
 
         <Container>

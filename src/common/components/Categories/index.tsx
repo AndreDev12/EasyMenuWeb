@@ -32,7 +32,6 @@ export const Categories = () => {
           <Icon 
             name={icon}
             color={id === idCategory ? lightTheme.extended.oceanStrong : lightTheme.primary.jordyBlue}
-            // color={id === idCategory ? lightTheme.extended.oceanStrong : 'initial'}
           />
           <S.CategoryTitle 
             text={title} 
