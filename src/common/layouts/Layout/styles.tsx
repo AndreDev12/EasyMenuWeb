@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Layout } from '@gamiui/standard';
+
 import { lightTheme } from '../../../../styles/design-system/theme';
 
 export const Content = styled(Layout.Content)`

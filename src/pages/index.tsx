@@ -41,7 +41,6 @@ export default function Home() {
         setIsLoading(false);
         setShowMessage(false);
         !res.data.length && setShowMessage(true);
-        console.log(res);
       })
     } catch (e) {
       console.log(e);
@@ -90,6 +89,7 @@ export default function Home() {
                 ({ description, id, imageUrl, price, title }: IProduct) => (
                   <Product
                     key={id}
+                    id={id}
                     description={description}
                     imageUrl={imageUrl}
                     price={price}

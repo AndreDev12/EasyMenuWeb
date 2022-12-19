@@ -19,12 +19,12 @@ export interface IProduct {
   title: string;
 }
 
-export const Product = ({ description, imageUrl, price, title }: IProduct) => {
+export const Product = ({ description, id, imageUrl, price, title }: IProduct) => {
 
   return (
     <S.Product>
       <Card width='fit' shadow='xs' rounded='xs'>
-        <Link href=''>
+        <Link href={`/product/${id}`}>
           <Card.Cover>
             <img
               alt={title}

@@ -1,6 +1,6 @@
 import React from 'react';
-import type { AppProps } from 'next/app';
 import { NextComponentType, NextPageContext } from 'next';
+import type { AppProps } from 'next/app';
 import { ThemeGamification } from '@gamiui/standard';
 
 import ThemeProvider from '../context/ThemeContext';
