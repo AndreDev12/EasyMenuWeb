@@ -38,7 +38,7 @@ export default function Home() {
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
-        setIsLoading(false);
+        // setIsLoading(false);
         setShowMessage(false);
         !res.data.length && setShowMessage(true);
         console.log(res);
@@ -108,7 +108,7 @@ export default function Home() {
                 minHeight='800px'
                 isLoading={isLoading}
                 loaderNode={<Loader type='spinner'></Loader>}
-                className={classNames('flex', 'align-center')}
+                className={classNames('flex', 'items-center')}
               >
               </Loader.Wrapper>
             )
