@@ -38,7 +38,7 @@ export default function Home() {
       ).then((res) => {
         setProductsByPage(res.data);
         setTotalItems(res.metaData.pagination.totalItems);
-        // setIsLoading(false);
+        setIsLoading(false);
         setShowMessage(false);
         !res.data.length && setShowMessage(true);
         console.log(res);
