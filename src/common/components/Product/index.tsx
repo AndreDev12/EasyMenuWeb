@@ -50,7 +50,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
             <Title level='h3'>{price}</Title>
           </Container>
           <Container>
-            <Link href=''>
+            <Link href={`/product/${id}`}>
               <Button
                 type='button'
                 rounded='sm'
