@@ -1,4 +1,5 @@
 import * as React from 'react';
+import Link from 'next/link';
 import classNames from 'classnames';
 import {
   Avatar,
@@ -28,9 +29,11 @@ export const Header = () => {
         padding='1rem'
         className={classNames('header__title__wrapper', 'flex', 'items-center')}
       >
-        <S.TitleBrand className={classNames('header__title')} level='h2'>
-          Logo
-        </S.TitleBrand>
+        <Link href='/'>
+          <S.TitleBrand className={classNames('header__title')} level='h2'>
+            Logo
+          </S.TitleBrand>
+        </Link>
       </S.HeaderLeft>
       <Container className={classNames('flex', 'items-center')}>
         <Input

@@ -7,6 +7,7 @@ import {
   Icon,
   RichText,
   Title,
+  Image
 } from '@gamiui/standard';
 
 import * as S from './styles';
@@ -26,15 +27,15 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
       <Card width='fit' shadow='xs' rounded='xs'>
         <Link href={`/product/${id}`}>
           <Card.Cover>
-            <img
+            <Image
               alt={title}
-              width='100%'
               src={imageUrl}
+              width='100%'
             />
           </Card.Cover>
         </Link>
         <Card.Content
-          title={<RichText text={title} />}
+          title={<RichText text={title} style={{textTransform: 'uppercase'}} />}
           description={
             <Container>
               <RichText text={description} />
@@ -47,7 +48,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
             style={{ marginBottom: '1rem' }}
           >
             <Icon name='heart' />
-            <Title level='h3'>{price}</Title>
+            <Title level='h3'>S/{price}</Title>
           </Container>
           <Container>
             <Link href={`/product/${id}`}>

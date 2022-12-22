@@ -1,9 +1,11 @@
 import styled from '@emotion/styled';
 import { Container, Icon, Title, RichText, Button } from '@gamiui/standard';
 
+import { lightTheme } from '../../../styles/design-system/theme';
+
 export const ProductDetails = styled(Container)`
-    background: rgba(255, 255, 255, 0.35);
-    box-shadow: 0 8px 32px 0 rgb(31 38 135 / 7%);
+    background-color: ${lightTheme.primary.white};
+    box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 5%);
     display: flex;
     justify-content: space-between;
     padding: 2rem;
@@ -15,6 +17,7 @@ export const BackIcon = styled(Icon)`
 
 export const ProductTitle = styled(Title)`
     margin-block: 0 1.7rem;
+    text-transform: capitalize;
 `;
 
 export const ProductDescription = styled(RichText)`
@@ -27,8 +30,7 @@ export const Selections = styled(Container)`
 `;
 
 export const SaucesArea = styled(Container)`
-    background-color: #fff;
-    border: 1px solid #ccc;
+    border: 1px solid ${lightTheme.neutral[400]};
     border-radius: 20px;
     padding: 10px 20px;
     width: 100%;
@@ -39,9 +41,8 @@ export const SaucesTitle = styled(Title)`
 `;
 
 export const DishesArea = styled(Container)`
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 20px;
+    border: 1px solid ${lightTheme.neutral[400]};
+    border-radius: 20px; 
     padding: 10px 20px;
     width: 100%;
 `;

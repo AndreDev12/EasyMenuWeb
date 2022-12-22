@@ -123,7 +123,7 @@ export default function Home() {
           }
         </Container>
 
-        <Container>
+        <Container style={{ marginTop: '2rem' }}>
           {numberPages >= 1 && (
             <Pagination
               numberPages={numberPages}
