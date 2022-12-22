@@ -24,23 +24,24 @@ export const ProductDetails = () => {
   const { pid } = router.query;
 
   useEffect(() => {
-    try {
-      get(`dishes/${pid}`)
-        .then(res => {
-          const { dishSauces, dishDishes } = res.data;
-          const { description, imageUrl, price, title } = res.data.dishInfo;
-          setDishInfo({
-            description: description,
-            imageUrl: imageUrl,
-            price: price,
-            title: title
-          })
-          setDishSauces(dishSauces);
-          setDishDishes(dishDishes);
+    async function dishesIdfetch(){
+      try{
+        const result = await get(`dishes/${pid}`);
+        const { dishSauces, dishDishes } = result.data;
+        const { description, imageUrl, price, title } = result.data.dishInfo;
+        setDishInfo({
+          description: description,
+          imageUrl: imageUrl,
+          price: price,
+          title: title
         })
-    } catch (e) {
-      console.log(e);
+        setDishSauces(dishSauces);
+        setDishDishes(dishDishes);
+      }catch(e){
+        console.log(e);
+      }
     }
+    dishesIdfetch();
   }, [])
 
   return (

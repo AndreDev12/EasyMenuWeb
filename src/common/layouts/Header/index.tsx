@@ -19,8 +19,6 @@ export const Header = () => {
 
   const handleChange = (newValue: string) => setValue(newValue);
 
-  console.log(value);
-
   return (
     <S.Header
       padding='1rem'

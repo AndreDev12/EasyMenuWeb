@@ -32,26 +32,26 @@ export default function Home() {
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
 
   useEffect(() => {
-    try {
-      get(
-        `dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`
-      ).then((res) => {
-        setProductsByPage(res.data);
-        setTotalItems(res.metaData.pagination.totalItems);
+    async function dishesFetch(){
+      try{
+        const result = await get(`dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`)
+        setProductsByPage(result.data);
+        setTotalItems(result.metaData.pagination.totalItems);
         setIsLoading(false);
         setShowMessage(false);
-        !res.data.length && setShowMessage(true);
-      })
-    } catch (e) {
-      console.log(e);
+        !result.data.length && setShowMessage(true);
+      }catch(e){
+        console.log(e);
+      }
     }
+    dishesFetch();
   }, [idCategory, pageNumber, debouncedValue]);
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
 
   const handleChangePage = (page: number) => {
-    console.log('test', page);
+    // console.log('test', page);
     setPage(page);
   };
 

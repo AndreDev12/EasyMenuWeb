@@ -13,13 +13,16 @@ export const Categories = () => {
   const icon = 'share' as const;
 
   useEffect(() => {
-    try {
-      get('categories')
-        .then(res => setCategories(res.data)) 
-    } catch (e) {
-      console.log(e);
+    async function categoriesFetch(){
+      try{
+        const result = await get('categories');
+        setCategories(result.data);
+      }catch(e){
+        console.log(e);
+      }
     }
-  }, []);
+    categoriesFetch();
+  }, [])
   
   return (
     <S.Categories>
