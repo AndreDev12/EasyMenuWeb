@@ -46,64 +46,64 @@ export const ProductDetails = () => {
 
   return (
     <S.ProductDetails>
-        <Container>
-            <Link 
-              href='/'
-              className={classNames('flex')}
-              style={{ marginBottom: '1.8rem', columnGap: '2rem' }}
-            >
-              <S.BackIcon name='setting' color={lightTheme.neutral[300]} />
-                Atrás
-            </Link>
-            <S.ProductTitle level='h1'>{title}</S.ProductTitle >
-            <S.ProductDescription text={description} />
-            <S.Selections>
-              <Container>
-                <S.SaucesArea>
-                  <S.SaucesTitle level='h5'>Elige tus salsas</S.SaucesTitle>
-                  {
-                    dishSauces?.map(
-                      ({ sauce }) => {
-                        const { id, price, title} = sauce[0];
-                        return (
-                          <Container key={id}>
-                            <label style={{ marginRight: '2rem' }}>{title}</label>
-                            <label>{price}</label>
-                          </Container>)
-                      }
+      <Container>
+        <Link 
+          href='/'
+          className={classNames('flex')}
+          style={{ marginBottom: '1.8rem', columnGap: '2rem' }}
+        >
+          <S.BackIcon name='setting' color={lightTheme.neutral[300]} />
+            Atrás
+        </Link>
+        <S.ProductTitle level='h1'>{title}</S.ProductTitle >
+        <S.ProductDescription text={description} />
+        <S.Selections>
+          <Container>
+            <S.SaucesArea>
+              <S.SaucesTitle level='h5'>Elige tus salsas</S.SaucesTitle>
+              {
+                dishSauces?.map(
+                  ({ sauce }) => {
+                    const { id, price, title} = sauce[0];
+                    return (
+                      <Container key={id}>
+                        <label style={{ marginRight: '2rem' }}>{title}</label>
+                        <label>{price}</label>
+                      </Container>)
+                  }
+                )
+              }
+            </S.SaucesArea>
+          </Container>
+          <Container>
+            <S.DishesArea>
+              <S.DishesTitle level='h5'>Elige otros platos</S.DishesTitle>
+              {
+                dishDishes.map(
+                  ({ dishSecond }) => {
+                    const { id, price, title} = dishSecond[0];
+                    return (
+                      <Container key={id}>
+                        <label style={{ marginRight: '2rem' }}>{title}</label>
+                        <label>{price}</label>
+                      </Container>
                     )
                   }
-                </S.SaucesArea>
-              </Container>
-              <Container>
-                <S.DishesArea>
-                  <S.DishesTitle level='h5'>Elige otros platos</S.DishesTitle>
-                  {
-                    dishDishes.map(
-                      ({ dishSecond }) => {
-                        const { id, price, title} = dishSecond[0];
-                        return (
-                          <Container key={id}>
-                            <label style={{ marginRight: '2rem' }}>{title}</label>
-                            <label>{price}</label>
-                          </Container>
-                        )
-                      }
-                    )
-                  }
-                </S.DishesArea>
-              </Container>
-            </S.Selections>
-        </Container>
-        <S.PriceImageContainer className={classNames('flex')}>
-          <Image
-            alt={title}
-            src={imageUrl} 
-            width='20rem' 
-          />
-          <S.ProductPriceDetails>S/ {price}</S.ProductPriceDetails>
-          <S.DetailsProductButton variant='danger'>Agregar</S.DetailsProductButton>
-        </S.PriceImageContainer>
+                )
+              }
+            </S.DishesArea>
+          </Container>
+        </S.Selections>
+      </Container>
+      <S.PriceImageContainer className={classNames('flex')}>
+        <Image
+          alt={title}
+          src={imageUrl} 
+          width='20rem' 
+        />
+        <S.ProductPriceDetails>S/ {price}</S.ProductPriceDetails>
+        <S.DetailsProductButton variant='danger'>Agregar</S.DetailsProductButton>
+      </S.PriceImageContainer>
     </S.ProductDetails>
   )
 }
