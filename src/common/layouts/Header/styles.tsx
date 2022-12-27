@@ -8,10 +8,10 @@ export const Header = styled(Container)`
   max-height: 100px;
 `;
 
-export const TitleBrand = styled(Title)`
-  color: ${lightTheme.primary.black};
-`;
-
 export const HeaderLeft = styled(Container)`
   gap: 1rem;
+`;
+
+export const TitleBrand = styled(Title)`
+  color: ${lightTheme.primary.black};
 `;
