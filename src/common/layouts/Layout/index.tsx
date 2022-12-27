@@ -15,6 +15,9 @@ export const LayoutWrapper = ({ children }: ILayoutWrapper) => {
         <Header />
       </S.LayoutHeader>
       <S.Content>{children}</S.Content>
+      <S.LayoutFooter>
+        <Footer />
+      </S.LayoutFooter>
     </Layout>
   );
 };

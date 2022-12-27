@@ -4,8 +4,8 @@ import { Container, Title } from '@gamiui/standard';
 import { lightTheme } from '../../../../styles/design-system/theme';
 
 export const Header = styled(Container)`
-  max-height: 100px;
   background-color: ${lightTheme.primary.white};
+  max-height: 100px;
 `;
 
 export const TitleBrand = styled(Title)`
