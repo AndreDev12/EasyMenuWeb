@@ -26,7 +26,8 @@ export const ProductDescription = styled(RichText)`
 
 export const Selections = styled(Container)`
     display: flex;
-    column-gap: 4rem;
+    flex-direction: column;
+    row-gap: 1rem;
 `;
 
 export const SaucesArea = styled(Container)`

@@ -50,7 +50,7 @@ export const ProductDetails = () => {
         <Link 
           href='/'
           className={classNames('flex')}
-          style={{ marginBottom: '1.8rem', columnGap: '2rem' }}
+          style={{ marginBottom: '1.8rem', columnGap: '.5rem' }}
         >
           <S.BackIcon name='setting' color={lightTheme.neutral[300]} />
             Atrás
