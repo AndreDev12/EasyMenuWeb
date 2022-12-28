@@ -3,28 +3,29 @@ import Link from 'next/link';
 import classNames from 'classnames';
 import { Icon } from '@gamiui/standard';
 
-import * as S from './styles';
 import { lightTheme } from '../../../../styles/design-system/theme';
+import * as S from './styles';
 
 export const Footer = () => {
+  const date = new Date();
+  const year = date.getFullYear();
+
   return (
     <S.Footer>
-      <S.FooterSection
-        className={classNames('flex')}
-      >
+      <S.FooterSection className={classNames('flex')}>
         <S.FooterText>
-          <S.LogoFooter
+          <S.FooterLogo
             padding='1rem'
           >
             <Link href='/'>
               <S.BrandTitle>Logo</S.BrandTitle>
             </Link>
-          </S.LogoFooter>
+          </S.FooterLogo>
         </S.FooterText>
         <S.FooterMenu
           className={classNames('flex', 'items-center')}
         >
-          <S.Information level='h3'>información</S.Information>
+          <S.Information level='h3'>Información</S.Information>
           <S.LinkContainer
             className={classNames('flex')}
           >
@@ -33,9 +34,9 @@ export const Footer = () => {
           </S.LinkContainer>
         </S.FooterMenu>
         <S.FooterMenu
-          className={classNames('flex', 'items-center')}
+          className={classNames('flex')}
         >
-          <S.Legal level='h3'>legal</S.Legal>
+          <S.Legal level='h3'>Legal</S.Legal>
           <S.LinkContainer
             className={classNames('flex')}
           >
@@ -46,58 +47,43 @@ export const Footer = () => {
         <S.SocialBlock
           className={classNames('flex')}
         >
-          <S.SocialFollow level='h3'>síguenos en:</S.SocialFollow>
+          <S.SocialFollow level='h3'>Síguenos en:</S.SocialFollow>
           <S.SocialMedia
             className={classNames('flex')}
           >
-            <Link 
-              href='/' 
-              style={{ 
-                border: `1px solid ${lightTheme.primary.white}`,
-                borderRadius: '50%',
-                padding: '0.3rem',
-              }}
-            ><Icon
-              color={`${lightTheme.primary.white}`}
-              name='youtube'
-            />
+            <Link href='/'>
+              <S.SocialMediaIcon
+                color={`${lightTheme.primary.white}`}
+                name='youtube'
+              />
             </Link>
-            <Link 
-              href='/' 
-              style={{ 
-                border: `1px solid ${lightTheme.primary.white}`,
-                borderRadius: '50%',
-                padding: '0.3rem',
-              }}
-            ><Icon
-              color={`${lightTheme.primary.white}`}
-              name='facebook'
-            />
+            <Link href='/'>
+              <S.SocialMediaIcon
+                color={`${lightTheme.primary.white}`}
+                name='facebook'
+              />
             </Link>
-            <Link 
-              href='/' 
-              style={{ 
-                border: `1px solid ${lightTheme.primary.white}`,
-                borderRadius: '50%',
-                padding: '0.3rem',
-              }}
-            ><Icon
-              color={`${lightTheme.primary.white}`}
-              name='twitter'
-            />
+            <Link href='/'>
+              <S.SocialMediaIcon
+                color={`${lightTheme.primary.white}`}
+                name='twitter'
+              />
             </Link>
           </S.SocialMedia>
         </S.SocialBlock>
+        <S.ScrollButtonContainer>
+          <S.ScrollButton 
+            preffix={
+              <Icon 
+                color={`${lightTheme.primary.white}`}
+                name='arrow__right'
+                size='30px'
+              />
+            }>
+          </S.ScrollButton>
+        </S.ScrollButtonContainer>
       </S.FooterSection>
+      <S.RightReserved text={`EasyMenuWeb ${year} - Todos los derechos reservados`}></S.RightReserved>
     </S.Footer>
-    // <Container
-    //   height='full'
-    //   padding='1rem'
-    //   className={classNames('footer', 'flex', 'justify-center', 'items-center')}
-    // >
-    //   <Button rounded='lg' preffix={<Icon name='bullet' color='white' />}>
-    //     Crear Tópico
-    //   </Button>
-    // </Container>
   );
 };
