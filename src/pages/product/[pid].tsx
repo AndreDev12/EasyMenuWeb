@@ -7,7 +7,7 @@ import { ProductDetails } from './ProductDetails';
 const Product = () => {
 
     return (
-        <Container padding='1rem' className={classNames('topics')}>
+        <Container className={classNames('topics')}>
             <Container>
                 <ProductDetails />
             </Container>

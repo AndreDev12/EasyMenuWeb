@@ -1,12 +1,12 @@
+import { useEffect, useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
-import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Container, Image } from '@gamiui/standard';
 
-import * as S from './styles';
 import { lightTheme } from '../../../styles/design-system/theme';
 import { get } from '../../config/api';
+import * as S from './styles';
 
 export const ProductDetails = () => {
   const [dishInfo, setDishInfo] = useState({
@@ -46,11 +46,16 @@ export const ProductDetails = () => {
 
   return (
     <S.ProductDetails>
-      <Container>
+      <Container style={{paddingInline: '100px',width: '50%'}}>
         <Link 
           href='/'
           className={classNames('flex')}
-          style={{ marginBottom: '1.8rem', columnGap: '.5rem' }}
+          style={{ 
+            columnGap: '.5rem', 
+            fontSize: '19px',
+            fontWeight: '600',
+            marginBottom: '1.8rem'
+          }}
         >
           <S.BackIcon name='setting' color={lightTheme.neutral[300]} />
             Atrás
@@ -95,14 +100,14 @@ export const ProductDetails = () => {
           </Container>
         </S.Selections>
       </Container>
-      <S.PriceImageContainer className={classNames('flex')}>
+      <S.PriceImageContainer className={classNames('flex', 'items-center')} style={{width: '50%'}}>
         <Image
           alt={title}
           src={imageUrl} 
           width='20rem' 
         />
         <S.ProductPriceDetails>S/ {price}</S.ProductPriceDetails>
-        <S.DetailsProductButton variant='danger'>Agregar</S.DetailsProductButton>
+        {/* <S.DetailsProductButton variant='danger'>Agregar</S.DetailsProductButton> */}
       </S.PriceImageContainer>
     </S.ProductDetails>
   )
