@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import {
@@ -10,9 +11,8 @@ import {
   Image
 } from '@gamiui/standard';
 
-import * as S from './styles';
-import { useContext } from 'react';
 import { ThemeContext } from '../../../context/ThemeContext';
+import * as S from './styles';
 
 export interface IProduct {
   description: string;
@@ -23,12 +23,12 @@ export interface IProduct {
 }
 
 export const Product = ({ description, id, imageUrl, price, title }: IProduct) => {
-  const { idCategory } = useContext(ThemeContext);
+  const { categoryName } = useContext(ThemeContext);
 
   return (
     <S.Product>
       <Card width='fit' shadow='xs' rounded='xs'>
-        <Link href={`/${idCategory}/product/${id}`}>
+        <Link href={`/${categoryName.toLowerCase().replace(' ', '-')}/product/${id}`}>
           <Card.Cover>
             <Image
               alt={title}
@@ -54,7 +54,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
             <Title level='h3'>S/{price}</Title>
           </Container>
           <Container>
-            <Link href={`/${idCategory}/product/${id}`}>
+            <Link href={`/${categoryName}/product/${id}`}>
               <Button
                 type='button'
                 rounded='sm'
