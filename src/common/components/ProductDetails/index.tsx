@@ -4,8 +4,8 @@ import { useRouter } from 'next/router';
 import classNames from 'classnames';
 import { Container, Image } from '@gamiui/standard';
 
-import { lightTheme } from '../../../styles/design-system/theme';
-import { get } from '../../config/api';
+import { lightTheme } from '../../../../styles/design-system/theme';
+import { get } from '../../../config/api';
 import * as S from './styles';
 
 export const ProductDetails = () => {
@@ -46,7 +46,7 @@ export const ProductDetails = () => {
 
   return (
     <S.ProductDetails>
-      <Container style={{paddingInline: '100px',width: '50%'}}>
+      <Container style={{paddingInline: '100px', width: '50%'}}>
         <Link 
           href='/'
           className={classNames('flex')}

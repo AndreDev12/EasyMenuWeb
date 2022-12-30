@@ -57,7 +57,7 @@ export const Footer = () => {
                 name='youtube'
               />
             </Link>
-            <Link href='/'>
+            <Link href='https://www.facebook.com/' target='_blank'>
               <S.SocialMediaIcon
                 color={`${lightTheme.primary.white}`}
                 name='facebook'
