@@ -7,10 +7,8 @@ import { ProductDetails } from '../../../common/components/ProductDetails';
 const Product = () => {
 
     return (
-        <Container className={classNames('topics')}>
-            <Container>
-                <ProductDetails />
-            </Container>
+        <Container height='full' className={classNames('topics')}>
+            <ProductDetails />
         </Container>
     )
 }

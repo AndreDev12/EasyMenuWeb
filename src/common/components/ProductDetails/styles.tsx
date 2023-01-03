@@ -5,6 +5,7 @@ import { lightTheme } from '../../../../styles/design-system/theme';
 
 export const ProductDetails = styled(Container)`
     display: flex;
+    height: 100%;
     justify-content: space-between;
     margin: auto;
     padding: 2rem;

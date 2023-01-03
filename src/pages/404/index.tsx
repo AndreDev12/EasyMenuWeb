@@ -6,7 +6,7 @@ import { LayoutWrapper } from '../../common/layouts';
 import { lightTheme } from '../../../styles/design-system/theme';
 import * as S from './styles';
 
-export default function Custom404() {
+export default function custom404() {
   return (
     <Container padding='1rem' className={classNames('topics')}>
       <S.ErrorPage>
@@ -33,6 +33,6 @@ export default function Custom404() {
   )
 }
 
-Custom404.getLayout = (children: React.ReactNode) => (
+custom404.getLayout = (children: React.ReactNode) => (
     <LayoutWrapper>{children}</LayoutWrapper>
 )
