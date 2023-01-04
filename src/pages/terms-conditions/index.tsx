@@ -4,7 +4,7 @@ import { Container, RichText, Spacer } from '@gamiui/standard';
 import { LayoutWrapper } from '../../common/layouts';
 import * as S from './styles';
 
-export default function termsConditions() {
+export default function TermsConditions() {
 
   return (
     <Container height='full' className={classNames('topics')}>
@@ -27,6 +27,6 @@ export default function termsConditions() {
   )
 }
 
-termsConditions.getLayout = (children: React.ReactNode) => (
+TermsConditions.getLayout = (children: React.ReactNode) => (
     <LayoutWrapper>{children}</LayoutWrapper>
 )

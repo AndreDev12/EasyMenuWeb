@@ -54,7 +54,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
             <Title level='h3'>S/{price}</Title>
           </Container>
           <Container>
-            <Link href={`/${categoryName}/product/${id}`}>
+            <Link href={`/${categoryName.toLowerCase().replace(' ', '-')}/product/${id}`}>
               <Button
                 type='button'
                 rounded='sm'

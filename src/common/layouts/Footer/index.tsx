@@ -30,7 +30,7 @@ export const Footer = () => {
             className={classNames('flex')}
           >
             <Link href='/'>Carta</Link>
-            <Link href='/'>Nosotros</Link>
+            <Link href='/about'>Nosotros</Link>
           </S.LinkContainer>
         </S.FooterMenu>
         <S.FooterMenu
@@ -40,7 +40,7 @@ export const Footer = () => {
           <S.LinkContainer
             className={classNames('flex')}
           >
-            <Link href='/'>Términos y condiciones</Link>
+            <Link href='/terms-conditions'>Términos y condiciones</Link>
             <Link href='/'>Políticas de privacidad</Link>
           </S.LinkContainer>
         </S.FooterMenu>
