@@ -9,7 +9,10 @@ export default function About() {
   return (
     <Container height='full' className={classNames('topics')}>
       <S.ContentWrapper>
-        <h1>Texto</h1>
+        <Container>
+          <S.AboutTitle level='h1'>Nosotros</S.AboutTitle>
+          <RichText text='Lorem ipsum dolor sit amet consectetur, adipisicing elit. Repellendus cupiditate velit rem libero, incidunt illum nemo neque aut enim? Iste perspiciatis rerum excepturi omnis perferendis, tempore recusandae voluptate architecto sint.' />
+        </Container>
       </S.ContentWrapper>
     </Container>
   )

@@ -48,7 +48,8 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
         <S.CardFooter>
           <Container
             className={classNames('flex', 'justify-between')}
-            style={{ marginBottom: '1rem' }}
+            // style={{ marginBottom: '1rem' }}
+            margin='0 0 1rem 0'
           >
             <Icon name='heart' />
             <Title level='h3'>S/{price}</Title>
