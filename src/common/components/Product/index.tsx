@@ -2,7 +2,6 @@ import { useContext } from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
 import {
-  Button,
   Card,
   Container,
   Icon,
@@ -12,6 +11,7 @@ import {
 } from '@gamiui/standard';
 
 import { ThemeContext } from '../../../context/ThemeContext';
+import { lightTheme } from '../../../../styles/design-system/theme';
 import * as S from './styles';
 
 export interface IProduct {
@@ -27,7 +27,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
 
   return (
     <S.Product>
-      <Card width='fit' shadow='xs' rounded='xs'>
+      <Card width='fit' shadow='xs' rounded='md'>
         <Link href={`/${categoryName.toLowerCase().replace(' ', '-')}/product/${id}`}>
           <Card.Cover>
             <Image
@@ -38,7 +38,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
           </Card.Cover>
         </Link>
         <Card.Content
-          title={<RichText text={title} style={{textTransform: 'uppercase'}} />}
+          title={<S.ProductName text={title} />}
           description={
             <Container>
               <RichText text={description} />
@@ -48,23 +48,19 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
         <S.CardFooter>
           <Container
             className={classNames('flex', 'justify-between')}
-            // style={{ marginBottom: '1rem' }}
-            margin='0 0 1rem 0'
+            margin='0 0 1rem'
           >
-            <Icon name='heart' />
+            <Icon name='heart' color={`${lightTheme.primary.first}`} />
             <Title level='h3'>S/{price}</Title>
           </Container>
           <Container>
             <Link href={`/${categoryName.toLowerCase().replace(' ', '-')}/product/${id}`}>
-              <Button
+              <S.ProductButton
                 type='button'
                 rounded='sm'
-                height='auto'
-                variant='primary'
-                width='full'
               >
-                View
-              </Button>
+                Ver
+              </S.ProductButton>
             </Link>
           </Container>
         </S.CardFooter>

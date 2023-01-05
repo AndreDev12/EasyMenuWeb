@@ -1,14 +1,23 @@
 import styled from '@emotion/styled';
-import { Card, Container } from '@gamiui/standard';
+import { Button, Card, Container, RichText } from '@gamiui/standard';
+
+import { lightTheme } from '../../../../styles/design-system/theme';
+
+export const Product = styled(Container)``;
+
+export const ProductName = styled(RichText)`
+  text-transform: uppercase;
+`;
 
 export const CardFooter = styled(Card.Footer)``;
 
-export const TagContainer = styled.div`
-  margin-top: 1rem;
+export const ProductButton = styled(Button)`
+  background-color: ${lightTheme.primary.first};
+  height: auto;
+  text-transform: uppercase;
+  width: 100%;
 `;
 
-export const Product = styled(Container)`
-  max-width: 300px;
-  /* margin: 0 auto; */
-  /* max-width: 100vw; */
-`;
+// export const TagContainer = styled.div`
+//   margin-top: 1rem;
+// `;

@@ -9,14 +9,15 @@ import {
   Loader
 } from '@gamiui/standard';
 
-import { lightTheme } from '../../styles/design-system/theme';
 import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
 import { IProduct, Product } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
 import { ThemeContext } from '../context/ThemeContext';
-import useDebounce from '../common/components/hooks/useDebounce';
 import { get } from '../config/api';
+import useDebounce from '../common/components/hooks/useDebounce';
+import { lightTheme } from '../../styles/design-system/theme';
+import * as S from './styles';
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
@@ -76,13 +77,7 @@ export default function Home() {
           />
         </Container>
 
-        <Container
-          className={classNames('topics__header', 'grid')}
-          style={{
-            gridTemplateColumns: 'repeat(auto-fill, minmax(25rem, 1fr))',
-            gap: '1rem',
-          }}
-        >
+        <S.ProductContainer className={classNames('topics__header')}>
           {
             !isLoading && (
               productsByPage?.map(
@@ -99,7 +94,7 @@ export default function Home() {
               )
             )
           }
-        </Container>
+        </S.ProductContainer>
 
         <Container>
           {
@@ -107,7 +102,7 @@ export default function Home() {
               <Loader.Wrapper 
                 minHeight='800px'
                 isLoading={isLoading}
-                loaderNode={<Loader type='spinner'></Loader>}
+                loaderNode={<Loader type='spinner' background={`${lightTheme.primary.first}`}></Loader>}
                 className={classNames('flex', 'items-center')}
               >
               </Loader.Wrapper>
@@ -123,7 +118,7 @@ export default function Home() {
           }
         </Container>
 
-        <Container style={{ marginTop: '2rem' }}>
+        <Container margin='0 0 2rem'>
           {numberPages >= 1 && (
             <Pagination
               numberPages={numberPages}
