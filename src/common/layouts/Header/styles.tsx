@@ -5,10 +5,15 @@ import { lightTheme } from '../../../../styles/design-system/theme';
 
 export const Header = styled(Container)`
   background-color: ${lightTheme.primary.white};
+  display: flex;
+  justify-content: space-between;
   max-height: 100px;
+  padding: 1rem;
 `;
 
 export const HeaderLeft = styled(Container)`
+  align-items: center;
+  display: flex;
   gap: 1rem;
 `;
 

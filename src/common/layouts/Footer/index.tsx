@@ -14,44 +14,30 @@ export const Footer = () => {
     <S.Footer>
       <S.FooterSection className={classNames('flex')}>
         <S.FooterText>
-          <S.FooterLogo
-            padding='1rem'
-          >
+          <S.FooterLogo padding='1rem'>
             <Link href='/'>
               <S.BrandTitle>Logo</S.BrandTitle>
             </Link>
           </S.FooterLogo>
         </S.FooterText>
-        <S.FooterMenu
-          className={classNames('flex', 'items-center')}
-        >
+        <S.FooterMenu className={classNames('flex', 'items-center')}>
           <S.Information level='h3'>Información</S.Information>
-          <S.LinkContainer
-            className={classNames('flex')}
-          >
+          <S.LinkContainer className={classNames('flex')}>
             <Link href='/'>Carta</Link>
             <Link href='/about'>Nosotros</Link>
           </S.LinkContainer>
         </S.FooterMenu>
-        <S.FooterMenu
-          className={classNames('flex')}
-        >
+        <S.FooterMenu className={classNames('flex')}>
           <S.Legal level='h3'>Legal</S.Legal>
-          <S.LinkContainer
-            className={classNames('flex')}
-          >
+          <S.LinkContainer className={classNames('flex')}>
             <Link href='/terms-conditions'>Términos y condiciones</Link>
             <Link href='/'>Políticas de privacidad</Link>
           </S.LinkContainer>
         </S.FooterMenu>
-        <S.SocialBlock
-          className={classNames('flex')}
-        >
+        <S.SocialBlock className={classNames('flex')}>
           <S.SocialFollow level='h3'>Síguenos en:</S.SocialFollow>
-          <S.SocialMedia
-            className={classNames('flex')}
-          >
-            <Link href='/'>
+          <S.SocialMedia className={classNames('flex')}>
+            <Link href='/' target='_blank'>
               <S.SocialMediaIcon
                 color={`${lightTheme.primary.white}`}
                 name='youtube'
@@ -63,7 +49,7 @@ export const Footer = () => {
                 name='facebook'
               />
             </Link>
-            <Link href='/'>
+            <Link href='/' target='_blank'>
               <S.SocialMediaIcon
                 color={`${lightTheme.primary.white}`}
                 name='twitter'

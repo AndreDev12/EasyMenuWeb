@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
-import Link from 'next/link';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 import classNames from 'classnames';
-import { Container, Image } from '@gamiui/standard';
+import { Container, Image, RichText } from '@gamiui/standard';
 
-import { lightTheme } from '../../../../styles/design-system/theme';
 import { get } from '../../../config/api';
 import * as S from './styles';
 
@@ -46,7 +45,7 @@ export const ProductDetails = () => {
 
   return (
     <S.ProductDetails>
-      <Container style={{paddingInline: '100px', width: '50%'}}>
+      <S.ContentContainer padding='0 100px 0'>
         <Link 
           href='/'
           className={classNames('flex')}
@@ -57,22 +56,22 @@ export const ProductDetails = () => {
             marginBottom: '1.8rem'
           }}
         >
-          <S.BackIcon name='setting' color={lightTheme.neutral[300]} />
+          <S.BackIcon name='setting' />
             Atrás
         </Link>
         <S.ProductTitle level='h1'>{title}</S.ProductTitle >
-        <S.ProductDescription text={description} />
+        <RichText text={description} margin='0 0 1.7rem' />
         <S.Selections>
           <Container>
             <S.SaucesArea>
-              <S.SaucesTitle level='h5'>Elige tus salsas</S.SaucesTitle>
+              <S.SaucesTitle level='h5' margin='0 0 1rem'>Elige tus salsas</S.SaucesTitle>
               {
                 dishSauces?.map(
                   ({ sauce }) => {
                     const { id, price, title} = sauce[0];
                     return (
                       <Container key={id}>
-                        <label style={{ marginRight: '2rem' }}>{title}</label>
+                        <S.Label>{title}</S.Label>
                         <label>{price}</label>
                       </Container>)
                   }
@@ -82,14 +81,14 @@ export const ProductDetails = () => {
           </Container>
           <Container>
             <S.DishesArea>
-              <S.DishesTitle level='h5'>Elige otros platos</S.DishesTitle>
+              <S.DishesTitle level='h5' margin='0 0 1rem'>Elige otros platos</S.DishesTitle>
               {
                 dishDishes.map(
                   ({ dishSecond }) => {
                     const { id, price, title} = dishSecond[0];
                     return (
                       <Container key={id}>
-                        <label style={{ marginRight: '2rem' }}>{title}</label>
+                        <S.Label>{title}</S.Label>
                         <label>{price}</label>
                       </Container>
                     )
@@ -99,15 +98,14 @@ export const ProductDetails = () => {
             </S.DishesArea>
           </Container>
         </S.Selections>
-      </Container>
-      <S.PriceImageContainer className={classNames('flex', 'items-center')} style={{width: '50%'}}>
+      </S.ContentContainer>
+      <S.PriceImageContainer className={classNames('flex', 'items-center')}>
         <Image
           alt={title}
           src={imageUrl} 
           width='20rem' 
         />
         <S.ProductPriceDetails>S/ {price}</S.ProductPriceDetails>
-        {/* <S.DetailsProductButton variant='danger'>Agregar</S.DetailsProductButton> */}
       </S.PriceImageContainer>
     </S.ProductDetails>
   )

@@ -91,5 +91,4 @@ export const RightReserved = styled(RichText)`
     opacity: .4;
     padding: 14px;
     text-align: center;
-    /* max-width: 100%; */
 `;

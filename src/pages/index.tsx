@@ -11,13 +11,13 @@ import {
 
 import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
-import { IProduct, Product } from '../common/components/Product';
+import { IProduct } from '../common/components/Product';
 import { LayoutWrapper } from '../common/layouts';
 import { ThemeContext } from '../context/ThemeContext';
 import { get } from '../config/api';
-import useDebounce from '../common/components/hooks/useDebounce';
 import { lightTheme } from '../../styles/design-system/theme';
-import * as S from './styles';
+import { ProductContainer } from '../common/components/ProductContainer';
+import useDebounce from '../common/components/hooks/useDebounce';
 
 export default function Home() {
   const [visible, setVisible] = useState(false);
@@ -27,7 +27,7 @@ export default function Home() {
   const [showMessage, setShowMessage] = useState(false);
   const { idCategory, value, page, setPage } = useContext(ThemeContext);
   const debouncedValue = useDebounce(value, 500);
-
+ 
   const SIZE_BY_PAGE = 5;
   let pageNumber = 1 + page;
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
@@ -77,24 +77,10 @@ export default function Home() {
           />
         </Container>
 
-        <S.ProductContainer className={classNames('topics__header')}>
-          {
-            !isLoading && (
-              productsByPage?.map(
-                ({ description, id, imageUrl, price, title }: IProduct) => (
-                  <Product
-                    key={id}
-                    id={id}
-                    description={description}
-                    imageUrl={imageUrl}
-                    price={price}
-                    title={title}
-                  />
-                )
-              )
-            )
-          }
-        </S.ProductContainer>
+        <ProductContainer 
+          isLoading={isLoading}
+          productsByPage={productsByPage}
+        />
 
         <Container>
           {

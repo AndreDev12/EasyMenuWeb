@@ -17,5 +17,4 @@ export const LayoutFooter = styled(Layout.Footer)`
   box-shadow: 0px 2px 8px 0px rgb(0 0 0 / 5%);
   overflow-x: hidden;
   position: relative;
-  /* z-index: 1; */
 `;

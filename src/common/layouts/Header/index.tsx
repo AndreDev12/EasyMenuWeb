@@ -21,18 +21,10 @@ export const Header = () => {
   const handleChange = (newValue: string) => setValue(newValue);
 
   return (
-    <S.Header
-      padding='1rem'
-      className={classNames('header', 'flex', 'justify-between')}
-    >
-      <S.HeaderLeft
-        padding='1rem'
-        className={classNames('header__title__wrapper', 'flex', 'items-center')}
-      >
+    <S.Header className={classNames('header')}>
+      <S.HeaderLeft padding='1rem' className={classNames('header__title__wrapper')}>
         <Link href='/'>
-          <S.TitleBrand className={classNames('header__title')} level='h2'>
-            Logo
-          </S.TitleBrand>
+          <S.TitleBrand className={classNames('header__title')} level='h2'>Logo</S.TitleBrand>
         </Link>
       </S.HeaderLeft>
       <Container className={classNames('flex', 'items-center')}>

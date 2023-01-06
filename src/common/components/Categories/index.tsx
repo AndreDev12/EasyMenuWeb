@@ -27,10 +27,12 @@ export const Categories = () => {
   return (
     <S.Categories>
       {categories.map(({ id, title }) => (
-        <S.Category key={id} onClick={() => {
-          setPage(0);
-          setIdCategory(id);
-          setCategoryName(title);
+        <S.Category 
+          key={id}
+          onClick={() => {
+            setPage(0);
+            setIdCategory(id);
+            setCategoryName(title);
           }}
         >
           <Icon 

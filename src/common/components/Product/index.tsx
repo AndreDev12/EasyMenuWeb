@@ -4,14 +4,12 @@ import classNames from 'classnames';
 import {
   Card,
   Container,
-  Icon,
   RichText,
   Title,
   Image
 } from '@gamiui/standard';
 
 import { ThemeContext } from '../../../context/ThemeContext';
-import { lightTheme } from '../../../../styles/design-system/theme';
 import * as S from './styles';
 
 export interface IProduct {
@@ -50,7 +48,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
             className={classNames('flex', 'justify-between')}
             margin='0 0 1rem'
           >
-            <Icon name='heart' color={`${lightTheme.primary.first}`} />
+            <S.WishListIcon name='heart' />
             <Title level='h3'>S/{price}</Title>
           </Container>
           <Container>
