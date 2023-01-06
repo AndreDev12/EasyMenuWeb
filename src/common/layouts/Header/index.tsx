@@ -1,14 +1,7 @@
 import * as React from 'react';
 import Link from 'next/link';
 import classNames from 'classnames';
-import {
-  Avatar,
-  Container,
-  Icon,
-  Input,
-  RichText,
-  Spacer,
-} from '@gamiui/standard';
+import { Avatar, Container, Icon, Input, RichText, Spacer } from '@gamiui/standard';
 
 import { ThemeContext } from '../../../context/ThemeContext';
 import { lightTheme } from '../../../../styles/design-system/theme';

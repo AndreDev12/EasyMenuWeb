@@ -3,7 +3,11 @@ import { Button, Card, Container, Icon, RichText } from '@gamiui/standard';
 
 import { lightTheme } from '../../../../styles/design-system/theme';
 
-export const Product = styled(Container)``;
+export const Product = styled(Container)`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`;
 
 export const ProductName = styled(RichText)`
   text-transform: uppercase;
@@ -21,7 +25,3 @@ export const ProductButton = styled(Button)`
   text-transform: uppercase;
   width: 100%;
 `;
-
-// export const TagContainer = styled.div`
-//   margin-top: 1rem;
-// `;

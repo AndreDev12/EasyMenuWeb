@@ -4,7 +4,7 @@ import { Container } from '@gamiui/standard';
 import { LayoutWrapper } from '../../../common/layouts';
 import { ProductDetails } from '../../../common/components/ProductDetails';
 
-export const Product = () => {
+const Product = () => {
 
     return (
         <Container height='full' className={classNames('topics')}>
@@ -16,3 +16,5 @@ export const Product = () => {
 Product.getLayout = (children: React.ReactNode) => (
     <LayoutWrapper>{children}</LayoutWrapper>
 );
+
+export default Product;

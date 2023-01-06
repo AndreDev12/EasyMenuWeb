@@ -31,7 +31,7 @@ export const Footer = () => {
           <S.Legal level='h3'>Legal</S.Legal>
           <S.LinkContainer className={classNames('flex')}>
             <Link href='/terms-conditions'>Términos y condiciones</Link>
-            <Link href='/'>Políticas de privacidad</Link>
+            <Link href='/policies-privacy'>Políticas de privacidad</Link>
           </S.LinkContainer>
         </S.FooterMenu>
         <S.SocialBlock className={classNames('flex')}>
