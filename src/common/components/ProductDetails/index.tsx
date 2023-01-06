@@ -1,6 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
 import classNames from 'classnames';
 import { Container, Image, RichText } from '@gamiui/standard';
 
@@ -46,19 +45,10 @@ export const ProductDetails = () => {
   return (
     <S.ProductDetails>
       <S.ContentContainer padding='0 100px 0'>
-        <Link 
-          href='/'
-          className={classNames('flex')}
-          style={{ 
-            columnGap: '.5rem', 
-            fontSize: '19px',
-            fontWeight: '600',
-            marginBottom: '1.8rem'
-          }}
-        >
+        <S.BackLink href='/'>
           <S.BackIcon name='setting' />
             Atrás
-        </Link>
+        </S.BackLink>
         <S.ProductTitle level='h1'>{title}</S.ProductTitle >
         <RichText text={description} margin='0 0 1.7rem' />
         <S.Selections>

@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Container, RichText, Spacer } from '@gamiui/standard';
+import { Container, RichText } from '@gamiui/standard';
 
 import { LayoutWrapper } from '../../common/layouts';
 import * as S from './styles';

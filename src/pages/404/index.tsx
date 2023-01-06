@@ -1,9 +1,7 @@
-import Link from 'next/link';
 import classNames from 'classnames';
 import { Container, RichText } from '@gamiui/standard';
 
 import { LayoutWrapper } from '../../common/layouts';
-import { lightTheme } from '../../../styles/design-system/theme';
 import * as S from './styles';
 
 export default function Custom404() {
@@ -15,19 +13,7 @@ export default function Custom404() {
           <S.ErrorImagen level='h3'>404</S.ErrorImagen>
           <RichText text='No se pudo encontrar esta página.' fontWeight='bold' />
         </S.ContentError>
-        <Link 
-          href='/' 
-          style={{ 
-            background: lightTheme.semantic.danger,
-            borderRadius: '25px',
-            color: lightTheme.primary.white,
-            maxWidth: '100%',
-            padding: '14px 20px 14px',
-            textAlign: 'center',
-            textTransform: 'uppercase', 
-            width: '200px',
-          }}
-        >Volver al inicio</Link>
+        <S.BackLink href='/'>Volver al inicio</S.BackLink>
       </S.ErrorPage>
     </Container>
   )

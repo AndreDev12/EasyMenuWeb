@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
 import classNames from 'classnames';
-import {
-  Container,
-  Modal,
-  Pagination,
-  Empty,
-  Loader
-} from '@gamiui/standard';
+import { Container, Modal, Pagination, Empty, Loader } from '@gamiui/standard';
 
 import { Categories } from '../common/components/Categories';
 import { News } from '../common/components/News';
@@ -16,7 +10,7 @@ import { LayoutWrapper } from '../common/layouts';
 import { ThemeContext } from '../context/ThemeContext';
 import { get } from '../config/api';
 import { lightTheme } from '../../styles/design-system/theme';
-import { ProductContainer } from '../common/components/ProductContainer';
+import { ProductList } from '../common/components/ProductList';
 import useDebounce from '../common/components/hooks/useDebounce';
 
 export default function Home() {
@@ -77,7 +71,7 @@ export default function Home() {
           />
         </Container>
 
-        <ProductContainer 
+        <ProductList
           isLoading={isLoading}
           productsByPage={productsByPage}
         />

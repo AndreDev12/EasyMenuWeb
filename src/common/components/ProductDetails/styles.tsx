@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import styled from '@emotion/styled';
 import { Container, Icon, Title } from '@gamiui/standard';
 
@@ -14,6 +15,14 @@ export const ProductDetails = styled(Container)`
 
 export const ContentContainer = styled(Container)`
     width: 50%;
+`;
+
+export const BackLink = styled(Link)`
+    column-gap: 0.5rem;
+    display: flex;
+    font-size: 19px;
+    font-weight: 600;
+    margin-bottom: 1.8rem;
 `;
 
 export const BackIcon = styled(Icon)`
