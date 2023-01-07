@@ -24,7 +24,7 @@ export const Product = ({ description, id, imageUrl, price, title }: IProduct) =
       <Card width='full' shadow='xs' rounded='md'>
         <Link href={`/${categoryName.toLowerCase().replace(' ', '-')}/product/${id}`}>
           <Card.Cover>
-            <NextImage imageUrl={imageUrl} alt={title}/>
+            <NextImage imageUrl={imageUrl} alt={title} />
           </Card.Cover>
         </Link>
         <Card.Content

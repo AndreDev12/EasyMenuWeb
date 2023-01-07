@@ -73,6 +73,7 @@ export const DishesTitle = styled(Title)`
 
 export const PriceImageContainer = styled(Container)`
     flex-direction: column;
+    padding: 0 100px 0;
     row-gap: 2rem;
     width: 50%;
 `;

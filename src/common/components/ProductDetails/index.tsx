@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Container, Image, RichText } from '@gamiui/standard';
 
 import { get } from '../../../config/api';
+import { NextImage } from '../NextImage';
 import * as S from './styles';
 
 export const ProductDetails = () => {
@@ -90,11 +91,12 @@ export const ProductDetails = () => {
         </S.Selections>
       </S.ContentContainer>
       <S.PriceImageContainer className={classNames('flex', 'items-center')}>
-        <Image
+        {/* <Image
           alt={title}
           src={imageUrl} 
           width='20rem' 
-        />
+        /> */}
+        <NextImage imageUrl={imageUrl} alt={title} />
         <S.ProductPriceDetails>S/ {price}</S.ProductPriceDetails>
       </S.PriceImageContainer>
     </S.ProductDetails>
