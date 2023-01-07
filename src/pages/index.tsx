@@ -13,9 +13,21 @@ import { lightTheme } from '../../styles/design-system/theme';
 import { ProductList } from '../common/components/ProductList';
 import useDebounce from '../common/components/hooks/useDebounce';
 
+export interface INews {
+  id?: number;
+  title: string;
+  description: string;
+  backgroundColor?: string;
+  color?: string;
+  imageUrl: string;
+  // backgroundImg?: string;
+}
+
 export default function Home() {
+
   const [visible, setVisible] = useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
+  const [news, setNews] = useState<INews[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
@@ -25,6 +37,20 @@ export default function Home() {
   const SIZE_BY_PAGE = 5;
   let pageNumber = 1 + page;
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
+
+  useEffect(() => {
+    async function newsFetch(){
+      try {
+        // const { data } = await get(`news`);
+        const { data } = await get(`news?startDate=2023-01-03&companyId=1`);
+        console.log(data);
+        setNews(data);
+      }catch(e){
+        console.log(e);
+      }
+    }
+    newsFetch();
+  }, [])
 
   useEffect(() => {
     async function dishesFetch(){
@@ -41,18 +67,6 @@ export default function Home() {
     }
     dishesFetch();
   }, [idCategory, pageNumber, debouncedValue])
-
-  // useEffect(() => {
-  //   async function newsFetch(){
-  //     try {
-  //       const result = await get(``)
-  //     }catch(e){
-  //       console.log(e);
-  //     }
-  //   }
-  //   newsFetch();
-  // }, [])
-  
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
@@ -74,13 +88,19 @@ export default function Home() {
         </Container>
 
         <Container margin='1rem 0'>
-          <News
-            title='Mira nuestras últimas ofertas!'
-            description='Válido hasta el 14-12-22'
-            backgroundColor={lightTheme.primary.first}
-            color={lightTheme.neutral[800]}
-            backgroundImg=''
-          />
+          {
+            news?.map( 
+              ({ id, title, description, backgroundColor, imageUrl }: INews ) => (
+                <News 
+                  key={id}
+                  title={title}
+                  description={description}
+                  backgroundColor={backgroundColor}
+                  imageUrl={imageUrl}
+                />
+              )
+            )
+          }
         </Container>
 
         <ProductList
