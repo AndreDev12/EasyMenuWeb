@@ -38,9 +38,9 @@ export const Header = () => {
           'items-center'
         )}
       >
-        <Avatar src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/ff/Bandera_de_Espa%C3%B1a_%28sin_escudo%29.svg/200px-Bandera_de_Espa%C3%B1a_%28sin_escudo%29.svg.png' />
+        <Avatar src='https://upload.wikimedia.org/wikipedia/commons/thumb/8/83/Flag_of_the_United_Kingdom_%283-5%29.svg/200px-Flag_of_the_United_Kingdom_%283-5%29.svg.png' />
         <Spacer customSize='8px' direction='right' />
-        <RichText text='ES' />
+        <RichText text='EN' />
       </Container>
     </S.Header>
   );

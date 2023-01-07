@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import classNames from 'classnames';
-import { Container, Image, RichText } from '@gamiui/standard';
+import { Container, RichText } from '@gamiui/standard';
 
 import { get } from '../../../config/api';
 import { NextImage } from '../NextImage';
@@ -45,7 +45,7 @@ export const ProductDetails = () => {
 
   return (
     <S.ProductDetails>
-      <S.ContentContainer padding='0 100px 0'>
+      <S.ContentContainer>
         <S.BackLink href='/'>
           <S.BackIcon name='setting' />
             Atrás
@@ -91,12 +91,14 @@ export const ProductDetails = () => {
         </S.Selections>
       </S.ContentContainer>
       <S.PriceImageContainer className={classNames('flex', 'items-center')}>
-        {/* <Image
-          alt={title}
-          src={imageUrl} 
-          width='20rem' 
-        /> */}
-        <NextImage imageUrl={imageUrl} alt={title} />
+        {  
+          imageUrl && (
+            <NextImage 
+              imageUrl={imageUrl}
+              alt={title}
+            />
+          )
+        }
         <S.ProductPriceDetails>S/ {price}</S.ProductPriceDetails>
       </S.PriceImageContainer>
     </S.ProductDetails>

@@ -9,11 +9,12 @@ export const ProductDetails = styled(Container)`
     height: 100%;
     justify-content: space-between;
     margin: auto;
-    padding: 2rem;
+    padding-bottom: 40px;
     width: 90%;
 `;
 
 export const ContentContainer = styled(Container)`
+    padding: 32px 100px 0;
     width: 50%;
 `;
 
@@ -73,7 +74,7 @@ export const DishesTitle = styled(Title)`
 
 export const PriceImageContainer = styled(Container)`
     flex-direction: column;
-    padding: 0 100px 0;
+    padding: 32px 100px 0;
     row-gap: 2rem;
     width: 50%;
 `;

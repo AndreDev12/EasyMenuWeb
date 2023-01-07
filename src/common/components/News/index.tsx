@@ -7,8 +7,8 @@ export interface INews {
   title: string;
   description: string;
   backgroundColor?: string;
-  backgroundImg?: string;
   color?: string;
+  backgroundImg?: string;
 }
 
 export const News: React.FC<INews> = ({
@@ -16,7 +16,7 @@ export const News: React.FC<INews> = ({
   description,
   backgroundColor,
   color,
-  backgroundImg,
+  backgroundImg
 }) => {
   return (
     <S.News

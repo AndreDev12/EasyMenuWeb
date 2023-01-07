@@ -29,7 +29,7 @@ export default function Home() {
   useEffect(() => {
     async function dishesFetch(){
       try{
-        const result = await get(`dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`)
+        const result = await get(`dishes/categories/${idCategory}?page=${pageNumber}&sizeByPage=${SIZE_BY_PAGE}&search=${debouncedValue}`);
         setProductsByPage(result.data);
         setTotalItems(result.metaData.pagination.totalItems);
         setIsLoading(false);
@@ -40,7 +40,19 @@ export default function Home() {
       }
     }
     dishesFetch();
-  }, [idCategory, pageNumber, debouncedValue]);
+  }, [idCategory, pageNumber, debouncedValue])
+
+  // useEffect(() => {
+  //   async function newsFetch(){
+  //     try {
+  //       const result = await get(``)
+  //     }catch(e){
+  //       console.log(e);
+  //     }
+  //   }
+  //   newsFetch();
+  // }, [])
+  
 
   const onOpen = () => setVisible(true);
   const onClose = () => setVisible(false);
@@ -103,7 +115,7 @@ export default function Home() {
             <Pagination
               numberPages={numberPages}
               initialPage={0}
-              onChangePage={(page) => handleChangePage(page)}
+              onChangePage={page => handleChangePage(page)}
               page={page}
             />
           )}
