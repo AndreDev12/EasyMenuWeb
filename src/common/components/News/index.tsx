@@ -1,21 +1,12 @@
 import React from 'react';
-import { useKeenSlider } from 'keen-slider/react';
 import 'keen-slider/keen-slider.min.css';
 import { RichText, Title } from '@gamiui/standard';
-
 
 import { INews } from '../../../pages';
 import * as S from './styles';
 
-// export interface INews {
-//   title: string;
-//   description: string;
-//   backgroundColor?: string;
-//   color?: string;
-//   backgroundImg?: string;
-// }
-
 export const News: React.FC<INews> = ({
+  id,
   title,
   description,
   backgroundColor,
@@ -23,35 +14,16 @@ export const News: React.FC<INews> = ({
   imageUrl
 }) => {
 
-  const [sliderRef] = useKeenSlider({
-    loop: true,
-  })
-
   return (
-    // <S.News
-    //   width='full'
-    //   $backgroundColor={backgroundColor}
-    //   $backgroundImg={imageUrl}
-    //   $color={color}
-    // >
-    //   <Title level='h3'>{title}</Title>
-    //   <RichText text={description} />
-    // </S.News>
-
-    <div
+    <S.News
+      className={`keen-slider__slide number-slide${id}`}
       // width='full'
-      // $backgroundColor={backgroundColor}
-      // $backgroundImg={imageUrl}
-      // $color={color}
-      ref={sliderRef}
-      className="keen-slider"
+      $backgroundColor={backgroundColor}
+      $backgroundImg={imageUrl}
+      $color={color}
     >
-      {/* <Title level='h3'>{title}</Title>
-      <RichText text={description} /> */}
-      {/* <Title className="keen-slider__slide number-slide1">{title}</Title>
-      <RichText text={description} /> */}
-      <div className="keen-slider__slide number-slide1">1</div>
-      <div className="keen-slider__slide number-slide2">2</div>
-    </div>
+      <Title level='h3'>{title}</Title>
+      <RichText text={description} />
+    </S.News>
   );
 };

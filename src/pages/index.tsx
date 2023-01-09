@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
+import { useKeenSlider } from 'keen-slider/react';
+import 'keen-slider/keen-slider.min.css';
 import classNames from 'classnames';
 import { Container, Modal, Pagination, Empty, Loader } from '@gamiui/standard';
 
@@ -20,6 +22,7 @@ export interface INews {
   backgroundColor?: string;
   color?: string;
   imageUrl: string;
+  // className: string;
   // backgroundImg?: string;
 }
 
@@ -38,10 +41,45 @@ export default function Home() {
   let pageNumber = 1 + page;
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
 
+  const [sliderRef] = useKeenSlider<HTMLDivElement>(
+    {
+      loop: true,
+    },
+    [
+      (slider) => {
+        let timeout: ReturnType<typeof setTimeout>
+        let mouseOver = false
+        function clearNextTimeout() {
+          clearTimeout(timeout)
+        }
+        function nextTimeout() {
+          clearTimeout(timeout)
+          if (mouseOver) return
+          timeout = setTimeout(() => {
+            slider.next()
+          }, 2000)
+        }
+        slider.on("created", () => {
+          slider.container.addEventListener("mouseover", () => {
+            mouseOver = true
+            clearNextTimeout()
+          })
+          slider.container.addEventListener("mouseout", () => {
+            mouseOver = false
+            nextTimeout()
+          })
+          nextTimeout()
+        })
+        slider.on("dragStarted", clearNextTimeout)
+        slider.on("animationEnded", nextTimeout)
+        slider.on("updated", nextTimeout)
+      },
+    ]
+  )
+
   useEffect(() => {
     async function newsFetch(){
       try {
-        // const { data } = await get(`news`);
         const { data } = await get(`news?startDate=2023-01-03&companyId=1`);
         console.log(data);
         setNews(data);
@@ -86,12 +124,13 @@ export default function Home() {
         <Container>
           <Categories />
         </Container>
-
-        <Container margin='1rem 0'>
+       
+        <div ref={sliderRef} className='keen-slider' style={{margin: '1rem 0'}}>
           {
             news?.map( 
               ({ id, title, description, backgroundColor, imageUrl }: INews ) => (
-                <News 
+                <News
+                  // className={`keen-slider__slide number-slide${id}`}
                   key={id}
                   title={title}
                   description={description}
@@ -101,7 +140,7 @@ export default function Home() {
               )
             )
           }
-        </Container>
+        </div>
 
         <ProductList
           isLoading={isLoading}
