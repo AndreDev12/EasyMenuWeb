@@ -1,7 +1,5 @@
 import * as React from 'react';
 import { useContext, useState, useEffect } from 'react';
-import { useKeenSlider } from 'keen-slider/react';
-import 'keen-slider/keen-slider.min.css';
 import classNames from 'classnames';
 import { Container, Modal, Pagination, Empty, Loader } from '@gamiui/standard';
 
@@ -15,22 +13,10 @@ import { lightTheme } from '../../styles/design-system/theme';
 import { ProductList } from '../common/components/ProductList';
 import useDebounce from '../common/components/hooks/useDebounce';
 
-export interface INews {
-  id?: number;
-  title: string;
-  description: string;
-  backgroundColor?: string;
-  color?: string;
-  imageUrl: string;
-  // className: string;
-  // backgroundImg?: string;
-}
-
 export default function Home() {
 
   const [visible, setVisible] = useState(false);
   const [productsByPage, setProductsByPage] = useState<IProduct[]>([]);
-  const [news, setNews] = useState<INews[]>([]);
   const [totalItems, setTotalItems] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [showMessage, setShowMessage] = useState(false);
@@ -40,55 +26,6 @@ export default function Home() {
   const SIZE_BY_PAGE = 5;
   let pageNumber = 1 + page;
   const numberPages = Math.ceil(totalItems / SIZE_BY_PAGE);
-
-  const [sliderRef] = useKeenSlider<HTMLDivElement>(
-    {
-      loop: true,
-    },
-    [
-      (slider) => {
-        let timeout: ReturnType<typeof setTimeout>
-        let mouseOver = false
-        function clearNextTimeout() {
-          clearTimeout(timeout)
-        }
-        function nextTimeout() {
-          clearTimeout(timeout)
-          if (mouseOver) return
-          timeout = setTimeout(() => {
-            slider.next()
-          }, 2000)
-        }
-        slider.on("created", () => {
-          slider.container.addEventListener("mouseover", () => {
-            mouseOver = true
-            clearNextTimeout()
-          })
-          slider.container.addEventListener("mouseout", () => {
-            mouseOver = false
-            nextTimeout()
-          })
-          nextTimeout()
-        })
-        slider.on("dragStarted", clearNextTimeout)
-        slider.on("animationEnded", nextTimeout)
-        slider.on("updated", nextTimeout)
-      },
-    ]
-  )
-
-  useEffect(() => {
-    async function newsFetch(){
-      try {
-        const { data } = await get(`news?startDate=2023-01-03&companyId=1`);
-        console.log(data);
-        setNews(data);
-      }catch(e){
-        console.log(e);
-      }
-    }
-    newsFetch();
-  }, [])
 
   useEffect(() => {
     async function dishesFetch(){
@@ -124,23 +61,8 @@ export default function Home() {
         <Container>
           <Categories />
         </Container>
-       
-        <div ref={sliderRef} className='keen-slider' style={{margin: '1rem 0'}}>
-          {
-            news?.map( 
-              ({ id, title, description, backgroundColor, imageUrl }: INews ) => (
-                <News
-                  // className={`keen-slider__slide number-slide${id}`}
-                  key={id}
-                  title={title}
-                  description={description}
-                  backgroundColor={backgroundColor}
-                  imageUrl={imageUrl}
-                />
-              )
-            )
-          }
-        </div>
+
+        <News />
 
         <ProductList
           isLoading={isLoading}

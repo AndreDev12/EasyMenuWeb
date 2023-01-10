@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
 import { Icon } from '@gamiui/standard';
 
-import * as S from './styles';
 import { lightTheme } from '../../../../styles/design-system/theme';
 import { ThemeContext } from '../../../context/ThemeContext';
 import { get } from '../../../config/api';
+import * as S from './styles';
 
 export const Categories = () => {
   const { idCategory, setIdCategory, setPage, setCategoryName } = useContext(ThemeContext);
